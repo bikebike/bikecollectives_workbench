@@ -1,0 +1,25 @@
+%section.title
+  %h2 New Application
+
+%section.form
+  .row
+    = form_tag save_application_path do
+      = hidden_field_tag :id, @application.id if @application.id.present?
+      .form-elements
+        .form-element
+          = label_tag :name
+          = text_field_tag :name, @application.name
+        .form-element
+          = label_tag :slug
+          = text_field_tag :slug, @application.slug
+        .form-element
+          = label_tag :description
+          = text_field_tag :description, @application.description
+        .form-element
+          = label_tag :path
+          = text_field_tag :path, @application.path
+        .form-element
+          = label_tag :url
+          = text_field_tag :url, @application.url
+      .actions
+        = button_tag 'Save'

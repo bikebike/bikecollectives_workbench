@@ -1,0 +1,31 @@
+#page-preview
+  %figure.preview
+    %img{src: screenshot_path(@application.slug, @group, @page, @index, @variant)}
+  .toolbar
+    %header#toolbar-header
+      = link_to 'Previous page', page_preview_path(*@examples[@prev_example]), class: [:button, :small]
+      %h2="#{@group.to_s.titlecase}: #{@page.to_s.titlecase} (#{@variant.to_s.titlecase}) #{@example_index + 1}/#{@examples.length}"
+      = link_to 'Next page', page_preview_path(*@examples[@next_example]), class: [:button, :small]
+    %section
+      %h3 Translations
+      %ul.inline
+        - @enabled_locales.each do |code|
+          %li= link_to @languages[code.to_s], translate_page_path(@application.slug, code, @group, @page), class: [:button, :small]
+    %section
+      #watch-discussion
+        = label_tag :is_watching, 'Follow discussion'
+        = check_box_tag :is_watching, '1', @is_watching, class: :stretch
+      %h3 Discussion
+
+      %ul.block.comments
+        - @comments.each do |comment|
+          %li
+            %header
+              %h4.user=comment.user.name
+              = time comment.created_at
+            .comment=markdown(comment.comment)
+      = form_tag :page_comment do
+        %h4.user New Comment
+        = text_area_tag :comment
+        .actions
+          = button_tag 'Comment'

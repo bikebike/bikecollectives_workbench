@@ -1,0 +1,33 @@
+%section.title
+  %h2=@group.to_s.titlecase
+
+%section.pages
+  .row
+    = form_tag watch_translation_path(@application.slug, '-'), id: 'watch-discussion' do
+      = hidden_field_tag :group, @group
+      = label_tag :watch, 'Follow application discussions'
+      = check_box_tag :watch, '1', current_user.following_page?(@application.id, @group), class: :stretch
+    %h3.section-title Pages
+    %ul.screenshots
+      - @pages[@group.to_s].each do |page|
+        %li
+          %figure.screenshot
+            %img{src: screenshot_path(@application.slug, @group, page, 0, :desktop)}
+          = link_to page.titlecase, page_path(@application.slug, @group, page), class: :cover
+:javascript
+  (function() {
+    var form = document.getElementById('watch-discussion'), checkbox = document.getElementById('watch');
+    checkbox.onchange = function() {
+        var request = new XMLHttpRequest();
+        request.onreadystatechange = function() {
+            if (request.readyState == 4) {
+                if (request.status == 200) {
+                    var result = JSON.parse(request.responseText);
+                    checkbox.checked = result.watching;
+                }
+            }
+        }
+        request.open('POST', form.getAttribute('action'), true);
+        request.send(new FormData(form));
+    };
+  })();

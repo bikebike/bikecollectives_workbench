@@ -1,0 +1,10 @@
+%section.title
+  %h2="#{@language} Translations"
+
+%section.pages
+  .row
+    = form_tag watch_translation_path(@application.slug, @locale), id: 'watch-locale' do
+      = label_tag :is_watching_locale, "Get notified when new #{@language} translations are needed"
+      = check_box_tag :watch, '1', current_user.following_locale?(@application.id, @locale), class: :stretch, id: 'is_watching_locale'
+  .row
+    = render 'translations'

@@ -1,0 +1,23 @@
+!!!
+%html{ lang: :en, class: @layout.present? ? "#{@layout}-layout" : nil }
+  %head
+    %meta{ charset: 'utf-8' }
+    %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1.0' }
+    %title Bike Collectives Workbench
+    = javascript_include_tag :application
+    = javascripts
+    = stylesheet_link_tag :application
+    = stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Space+Mono|Roboto:300,900'
+    %link{ href: asset_path('favicon.ico'), rel: 'shortcut icon', type: 'image/x-icon' }
+    %link{ href: asset_path('favicon.ico'), rel: 'icon', type: 'image/x-icon' }
+
+%body{class: [params[:controller], "#{params[:controller]}-#{params[:action]}"]}
+  %header
+    %nav#main-nav
+      %h1=link_to 'Bike Collective Workbench', home_path
+      =link_to 'Help', (@help ? help_url(@help) : help_home_url), class: 'help' if logged_in? && current_user.has_workbench_access
+      =link_to @back[:text], @back[:link], class: 'back-link' if @back.present?
+  - if @layout == :preview
+    = yield
+  - else
+    = render 'body'

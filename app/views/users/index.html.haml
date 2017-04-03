@@ -1,0 +1,25 @@
+%section.options
+  .row
+    %h2 Users
+    %p This page is used for approving requests to access the workbench and finding user profiles.
+
+    = form_tag :search_for_user, class: 'main-form' do
+      = label_tag :email, 'Find a user by email address:'
+      .flex
+        = email_field_tag :email, nil, class: [:stretch, :big]
+        = button_tag 'Search', value: :confirm_email
+  - if @requests.present?
+    .row
+      %h3 Access Requests
+      %table
+        %thead
+          %tr
+            %th User
+            %th Request Message
+            %th Request Date
+        %tbody
+        - @requests.each do |user|
+          %tr
+            %td=link_to user.named_email, edit_user_path(user.id)
+            %td=user.workbench_access_request_message
+            %td=time user.workbench_access_request_date

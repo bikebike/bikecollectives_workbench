@@ -1,0 +1,30 @@
+
+- if logged_in?
+  %section.options
+    .row
+      %nav.column
+        = link_to 'Users', :users, class: [:button, :primary]
+        = link_to 'New Application', new_application_path, class: :button
+      %ul.apps.objects
+        - @applications.each do |app|
+          %li
+            %img{src: File.join(app.url, 'assets', 'logo.png')}
+            %h3=app.name
+            %p=app.description
+            = link_to 'View', view_application_path(app.slug)
+      
+- else
+  %section.options
+    .row
+      %h2 Welcome
+      %p
+        Welcome to the Bike Collective Workbench. Here you can edit translations and talk about new developments for our websites. To access these tools, please first sign in. If you have not already, you may need to request access after signing in.
+      = form_tag do_confirm_path, class: 'main-form' do
+        = label_tag :email, 'Sign in by confirming your email address:'
+        %div.flex
+          = hidden_field_tag :dest, home_path
+          = email_field_tag :email, nil, class: [:stretch, :big]
+          = button_tag 'Continue', value: :confirm_email
+        %div.flex
+          = label_tag 'facebook-login', 'Or through your Facebook account', class: :stretch
+          = link_to 'Facebook Sign In', auth_at_provider_path(provider: :facebook, dest: home_path), class: [:button, :facebook], id: 'facebook-login'

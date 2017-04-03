@@ -1,0 +1,75 @@
+.dlg
+  .dlg-inner
+    %header
+      .prev-next
+        %a.prev{href: '#'} &#9668;
+        %a.next{href: '#'} &#9658;
+      %h1.code=@key
+      %a.close{href: '#'} &times;
+    %section.content
+      %ul.screenshots.scroll
+        - @info.each do |page, info|
+          - controller, action = page.split('/')
+          - info['indices'].each do |index|
+            %li{class: controller == @group.to_s && action == @page.to_s ? :highlight : nil}
+              - path = example_page_path(@application.slug, controller, action, index, anchor: @demokey)
+              - screenshot = screenshot_path(@application.slug, controller, action, index, :desktop)
+              %figure.screenshot
+                %img{src: screenshot}
+              = link_to path, class: :cover do
+                %h3.group=controller.titlecase
+                %h4.page=action.titlecase
+      .demo
+        .controls
+          .buttons
+            %a.mobile-toggle{href: '#'}
+            %a.exit-demo{href: '#'} ×
+          .details
+            %div
+              %h3 Title:
+              %span.title
+            %div
+              %h4 Description:
+              %span.description
+        %iframe
+    .translation-form
+      - if @context
+        .float-right
+          %h4 Context
+          = @context.titlecase
+      - elsif @default
+        .float-right
+          %h4 Default
+          = @default.html_safe
+      - elsif @english
+        .float-right
+          %h4 English Translation
+          = @english.html_safe
+      - if @vars.present?
+        %div
+          %h4 Demo:
+          %span.rendered-input
+      .input{contenteditable: :true, data: { vars: @vars.present? ? @vars.to_json : nil } }=(@translation || '').html_safe
+      %script#format-names{type: :json}
+        = @formats.to_json.html_safe
+      = form_tag save_translation_path(@application.slug, @locale) do
+        = hidden_field_tag :key, @key
+        = hidden_field_tag :translation, @translation, class: :translation
+        .actions.flex
+          .variables.large
+            - if @vars.present?
+              - @vars.each do |var, values|
+                - if values.is_a?(Hash)
+                  - @button_formats.each do |type, fmt|
+                    .date-format
+                      %a.button.format.var{for: "fmt-#{type.downcase}"}=type
+                      %select{id: "fmt-#{type.downcase}"}
+                        - fmt.each do |f, name|
+                          %option{value: f}=name
+                - else
+                  %a.button.var{data: {var: var}}=var
+          .right
+            #watch-translation
+              = label_tag :is_watching, 'Watch'
+              = check_box_tag :is_watching, '1', @is_watching, class: :stretch
+            = button_tag 'Save', class: :primary, id: 'save-translation'

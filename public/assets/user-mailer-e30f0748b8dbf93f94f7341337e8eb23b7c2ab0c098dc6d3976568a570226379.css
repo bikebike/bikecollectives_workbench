@@ -1,0 +1,165 @@
+/* line 3, C:/Users/goodg/Code/bikecollectives/devo/bikecollectives_workbench/app/assets/stylesheets/user-mailer.scss */
+body {
+  width: 100% !important;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  margin: 1em;
+  padding: 0;
+}
+
+/* line 11, C:/Users/goodg/Code/bikecollectives/devo/bikecollectives_workbench/app/assets/stylesheets/user-mailer.scss */
+.ExternalClass {
+  width: 100%;
+  line-height: 100%;
+}
+/* line 15, C:/Users/goodg/Code/bikecollectives/devo/bikecollectives_workbench/app/assets/stylesheets/user-mailer.scss */
+.ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {
+  line-height: 100%;
+}
+
+/* line 20, C:/Users/goodg/Code/bikecollectives/devo/bikecollectives_workbench/app/assets/stylesheets/user-mailer.scss */
+#backgroundTable {
+  margin: 0;
+  padding: 0;
+  width: 100% !important;
+  max-width: 100% !important;
+  line-height: 100% !important;
+}
+
+/* line 28, C:/Users/goodg/Code/bikecollectives/devo/bikecollectives_workbench/app/assets/stylesheets/user-mailer.scss */
+img {
+  outline: none;
+  text-decoration: none;
+  -ms-interpolation-mode: bicubic;
+}
+/* line 33, C:/Users/goodg/Code/bikecollectives/devo/bikecollectives_workbench/app/assets/stylesheets/user-mailer.scss */
+a img {
+  border: none;
+}
+
+/* line 38, C:/Users/goodg/Code/bikecollectives/devo/bikecollectives_workbench/app/assets/stylesheets/user-mailer.scss */
+.image_fix {
+  display: block;
+  max-width: 100%;
+}
+
+/* line 43, C:/Users/goodg/Code/bikecollectives/devo/bikecollectives_workbench/app/assets/stylesheets/user-mailer.scss */
+a {
+  color: #FFBF00;
+}
+/* line 46, C:/Users/goodg/Code/bikecollectives/devo/bikecollectives_workbench/app/assets/stylesheets/user-mailer.scss */
+#outlook a {
+  padding: 0;
+}
+/* line 50, C:/Users/goodg/Code/bikecollectives/devo/bikecollectives_workbench/app/assets/stylesheets/user-mailer.scss */
+a:link {
+  color: #FFBF00;
+}
+/* line 51, C:/Users/goodg/Code/bikecollectives/devo/bikecollectives_workbench/app/assets/stylesheets/user-mailer.scss */
+a:visited {
+  color: #FFBF00;
+}
+/* line 52, C:/Users/goodg/Code/bikecollectives/devo/bikecollectives_workbench/app/assets/stylesheets/user-mailer.scss */
+a:hover {
+  color: #FFF;
+}
+@media only screen and (max-device-width: 480px) {
+  /* line 55, C:/Users/goodg/Code/bikecollectives/devo/bikecollectives_workbench/app/assets/stylesheets/user-mailer.scss */
+  a[href^="tel"], a[href^="sms"] {
+    text-decoration: none;
+    color: #444;
+    pointer-events: none;
+    cursor: default;
+  }
+  /* line 62, C:/Users/goodg/Code/bikecollectives/devo/bikecollectives_workbench/app/assets/stylesheets/user-mailer.scss */
+  .mobile_link a[href^="tel"], .mobile_link a[href^="sms"] {
+    text-decoration: default;
+    color: #FFBF00 !important;
+    pointer-events: auto;
+    cursor: default;
+  }
+}
+
+/* line 71, C:/Users/goodg/Code/bikecollectives/devo/bikecollectives_workbench/app/assets/stylesheets/user-mailer.scss */
+p {
+  color: #444 !important;
+  font-size: 1.5em;
+}
+
+/* line 76, C:/Users/goodg/Code/bikecollectives/devo/bikecollectives_workbench/app/assets/stylesheets/user-mailer.scss */
+p, blockquote {
+  margin: 1em;
+  line-height: 1.3333em;
+}
+
+/* line 81, C:/Users/goodg/Code/bikecollectives/devo/bikecollectives_workbench/app/assets/stylesheets/user-mailer.scss */
+blockquote {
+  font-size: 1em;
+}
+
+/* line 85, C:/Users/goodg/Code/bikecollectives/devo/bikecollectives_workbench/app/assets/stylesheets/user-mailer.scss */
+h1 {
+  font-size: 2.5em;
+  line-height: 1.25em;
+  padding: 1em 0;
+}
+/* line 90, C:/Users/goodg/Code/bikecollectives/devo/bikecollectives_workbench/app/assets/stylesheets/user-mailer.scss */
+h1:first-child {
+  padding-top: 0;
+}
+
+/* line 95, C:/Users/goodg/Code/bikecollectives/devo/bikecollectives_workbench/app/assets/stylesheets/user-mailer.scss */
+h2 {
+  font-size: 1.8em;
+  line-height: 1.25em;
+  padding-bottom: 1em;
+}
+
+/* line 101, C:/Users/goodg/Code/bikecollectives/devo/bikecollectives_workbench/app/assets/stylesheets/user-mailer.scss */
+h1, h2, h3, h4, h5, h6 {
+  color: #444 !important;
+}
+/* line 104, C:/Users/goodg/Code/bikecollectives/devo/bikecollectives_workbench/app/assets/stylesheets/user-mailer.scss */
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+  color: #FFBF00 !important;
+}
+/* line 107, C:/Users/goodg/Code/bikecollectives/devo/bikecollectives_workbench/app/assets/stylesheets/user-mailer.scss */
+h1 a:active, h2 a:active, h3 a:active, h4 a:active, h5 a:active, h6 a:active {
+  color: #32936F !important;
+}
+/* line 111, C:/Users/goodg/Code/bikecollectives/devo/bikecollectives_workbench/app/assets/stylesheets/user-mailer.scss */
+h1 a:visited, h2 a:visited, h3 a:visited, h4 a:visited, h5 a:visited, h6 a:visited {
+  color: #E83F6F !important;
+}
+
+/* line 118, C:/Users/goodg/Code/bikecollectives/devo/bikecollectives_workbench/app/assets/stylesheets/user-mailer.scss */
+table {
+  border-collapse: collapse;
+  max-width: 512px;
+  min-width: 280px;
+  mso-table-lspace: 0pt;
+  mso-table-rspace: 0pt;
+}
+/* line 125, C:/Users/goodg/Code/bikecollectives/devo/bikecollectives_workbench/app/assets/stylesheets/user-mailer.scss */
+table td {
+  border-collapse: collapse;
+}
+/* line 129, C:/Users/goodg/Code/bikecollectives/devo/bikecollectives_workbench/app/assets/stylesheets/user-mailer.scss */
+table th {
+  text-align: left;
+}
+
+/* line 134, C:/Users/goodg/Code/bikecollectives/devo/bikecollectives_workbench/app/assets/stylesheets/user-mailer.scss */
+code {
+  color: #C33;
+  font-size: 0.9em;
+}
+
+/* line 139, C:/Users/goodg/Code/bikecollectives/devo/bikecollectives_workbench/app/assets/stylesheets/user-mailer.scss */
+pre {
+  font-size: 1.5em;
+  padding: 1em;
+  background-color: #333;
+  color: antiquewhite;
+  word-break: break-word;
+}

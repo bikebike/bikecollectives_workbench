@@ -1,0 +1,7 @@
+%h2 Applications
+%ul
+  - @locales.each do |locale|
+    %li=@languages[locale.to_s]
+%ul
+  - @all_locales.each do |locale|
+    %li=@languages[locale.to_s]

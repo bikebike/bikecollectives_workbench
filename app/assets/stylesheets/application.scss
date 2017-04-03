@@ -1,0 +1,1216 @@
+@import "settings";
+
+html {
+    font-family: $paragraph;
+    font-weight: $paragraph-weight;
+    color: $black;
+    background-color: $gray;
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+:focus {
+    outline: 0;
+    box-shadow: 0 0 0.1rem 0.1rem $yellow;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    background-color: $white;
+
+    &.fullscreen {
+        overflow: hidden;
+    }
+}
+
+main {
+    min-height: calc(100vh - 15em);
+}
+
+a {
+    text-decoration: none;
+    color: $blue;
+}
+
+section {
+    &.title {
+        text-align: center;
+        
+        img {
+            height: 1em;
+            width: 1em;
+            vertical-align: middle;
+            margin-bottom: 0.25em;
+        }
+    }
+
+    &.options {
+        // max-width: 800px;
+        // margin: 3em auto 0;
+
+        li {
+            position: relative;
+            text-align: center;
+            border: 0.1em solid rgba($black, 0.15);
+            border-radius: 0.333rem;
+            width: 17.5em;
+            overflow: hidden;
+
+            img {
+                margin: auto;
+                padding: 1em;
+            }
+
+            p {
+                margin-top: 0;
+                padding: 0.5em;
+                color: rgba($black, 0.6667);
+            }
+
+            a {
+                display: block;
+                font-family: $title;
+                font-weight: $title-weight;
+                letter-spacing: 0.0333em;
+                font-size: 1.75em;
+                margin: 0;
+                padding: 0.5em;
+                background-color: rgba($red, 0.667);
+                background-color: $red;
+                color: $white;
+                text-decoration: none;
+                border-radius: 0;
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                }
+            }
+
+            &:hover a::after {
+                background-color: rgba($black, 0.05);
+            }
+        }
+    }
+}
+
+.row {
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 0 2em 5em;
+
+    &.center {
+        text-align: center;
+    }
+
+    .column {
+        float: left;
+    }
+}
+
+nav {
+    &.column {
+        a {
+            display: block;
+            text-align: center;
+
+            &:first-child {
+                margin-top: 0;
+            }
+        }
+    }
+}
+
+#main-nav {
+    padding: 0.5em;
+    margin: 0 1em 2em;
+    box-shadow: 0 0.1em 0.5em -0.3em;
+    background-color: $white;
+    overflow: auto;
+
+    h1 {
+        margin: 0;
+        float: left;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: inherit;
+
+        &.back-link,
+        &.help {
+            font-size: 1.2em;
+            margin-top: 0.2em;
+            float: right;
+        }
+
+        &.help + .back-link {
+            margin-right: 0.75em;
+            padding-right: 0.75em;
+            border-right: 0.1em solid #CCC;
+        }
+    }
+
+    html.preview-layout & {
+        margin: 0;
+        padding: 0.5em 1.5em;
+        border-bottom: 0.1em solid #EEE;
+    }
+}
+
+#banner {
+    position: relative;
+    height: 15em;
+    padding: 1em;
+    margin: 0 0 1em;
+    background-color: $blue;
+    background: url(/assets/wheel.jpg),
+                linear-gradient(135deg, $blue 0%, $green 100%);
+    color: $white;
+    text-align: center;
+    overflow: hidden;
+    background-size: cover, 100% 100%;
+    background-position: 50% 40%, 50%;
+    background-blend-mode: soft-light;
+
+    h1 {
+        position: absolute;
+        margin: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        font-size: 4em;
+        line-height: 0.975ch;
+        text-shadow: 0 0 0.25em $black;
+    }
+
+    body.application-home & {
+        height: 30em;
+        background-position: 50% 25%, 50%;
+    }
+}
+
+body > footer {
+    margin-top: 5em;
+    background-color: #EEE;
+
+    .row {
+        padding: 2em 1em 3em;
+    }
+
+    .user-controls {
+        float: left;
+    }
+
+    a {
+        // text-decoration: none;
+        color: $black;
+    }
+
+    .copyright {
+        float: right;
+    }
+}
+
+p {
+    font-size: 1.25em;
+    line-height: 1.4em;
+    margin: 0 0.5em 1em;
+}
+
+h1, h2, h3, h4, h5, h6, label, th, figcaption {
+    font-family: $title;
+    font-weight: $title-weight;
+    letter-spacing: 0.0333em;
+    margin: 0 0 0.5em;
+}
+
+h5 {
+    font-size: 1.3333em;
+}
+
+label {
+    display: inline-block;
+    font-size: 1.25em;
+}
+
+pre, code, .code {
+    font-family: $monospace;
+}
+
+h2 {
+    font-size: 3.5em;
+
+    .subtitle {
+        font-size: 0.75em;
+    }
+}
+
+section > h3,
+section > .row > h3 {
+    text-align: left;
+    font-size: 2em;
+    border-bottom: 0.01em solid rgba($black, 0.2);
+}
+
+section.help {
+    h4 {
+        font-size: 1.75em;
+    }
+
+    figure {
+        margin: 0;
+        text-align: center;
+    }
+}
+
+th {
+    text-align: left;
+    vertical-align: top;
+}
+
+td {
+    vertical-align: top;
+}
+
+tbody {
+    background-color: rgba($black, 0.05);
+
+    td, th {
+        border-top: 0.25em solid $white;
+        padding: 0.5em;
+    }
+
+    #translation-list & {
+        tr {
+            cursor: pointer;
+
+            &:hover {
+                background-color: rgba($white, 0.5);
+            }
+        }
+    }
+
+    tr {
+        &:first-child {
+            td, th {
+                border-top: 0;
+            }
+        }
+    }
+
+    th {
+        padding-right: 0;
+        border-right: 0.125em solid rgba($white, 0.5);
+    }
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+
+    ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    li {
+        &:before {
+            content: '▪';
+            margin-right: 0.5em;
+        }
+    }
+}
+
+ul {
+    &.inline, &.block {
+        margin-top: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    &.inline {
+        li {
+            display: inline-block;
+        }
+    }
+}
+
+.comments {
+    background-color: $white;
+    color: $black;
+    margin-bottom: 1em;
+    border-radius: 0.15rem;
+
+    li {
+        border-bottom: 0.05em solid rgba($black, 0.25);
+        padding: 0.5em;
+        margin: 0.5em;
+
+        header {
+            text-align: right;
+
+            .user {
+                float: left;
+            }
+        }
+    }
+
+    .comment {
+        clear: both;
+        margin: 0 0 0 0.5em;
+    }
+
+    p {
+        margin: 0.5em 0;
+    }
+}
+
+#screenshots {
+    td:first-child {
+        width: 66.667%;
+
+        &:last-child {
+            width: 100%;
+            text-align: center;
+        }
+    }
+
+    th {
+        font-size: 2em;
+        text-align: center;
+    }
+
+    a {
+        display: block;
+    }
+}
+
+img {
+    max-width: 100%;
+}
+
+.form-elements {
+    display: table;
+    width: 100%;
+}
+
+.form-element {
+    display: table-row;
+}
+
+.form-element label {
+    display: table-cell;
+    width: 1px;
+    padding-right: 1em;
+}
+
+.form-element input {
+    display: table-cell;
+    width: 100%;
+}
+
+.actions {
+    margin: 1em 0;
+    text-align: right;
+
+    &.flex {
+        text-align: left;
+        display: flex;
+
+        .large {
+            flex: 1;
+        }
+    }
+
+    .right {
+        text-align: right;
+    }
+}
+
+form {
+    max-width: 50em;
+    margin: 0 auto;
+
+    &.main-form {
+        margin-top: 4em;
+    }
+}
+
+a.button {
+    background-color: $blue;
+}
+
+.variables {
+    align-self: flex-start;
+
+    .date-format {
+        display: inline-block;
+        background-color: $red;
+        border-radius: 0.15rem;
+        margin: 0.5em 0;
+
+        select {
+            display: block;
+            position: relative;
+            width: 100%;
+            z-index: 1;
+            background-color: rgba($white, 0.2);
+            font: inherit;
+            font-size: 0.85em;
+            border: 0;
+            cursor: inherit;
+            padding: 0.25em;
+        }
+    }
+}
+
+button, .button {
+    position: relative;
+    display: inline-block;
+    font-family: $title;
+    font-weight: $title-weight;
+    font-size: 1.5em;
+    text-decoration: none;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    padding: 1em 2em;
+    color: $white;
+    background-color: $green;
+    border-radius: 0.15rem;
+    margin: 0.5em 0;
+    letter-spacing: 0.0333em;
+    box-shadow: inset 0 0 0.1em rgba($black, 0.5);
+    overflow: hidden;
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: rgba($white, 0);
+        transition: background-color 150ms ease-in-out;
+    }
+
+    &:hover::after {
+        background-color: rgba($white, 0.25);
+    }
+
+    &.var {
+        font-size: 0.9em;
+        font-family: $monospace;
+        background-color: $colour-3;
+        color: $yellow;
+        font-weight: bold;
+        padding: 0.5em 0.75em;
+
+        &.format {
+            display: block;
+            margin: 0;
+            background-color: transparent;
+            border-radius: 0;
+            padding: 0.25em 0.5em;
+        }
+    }
+
+    &.primary {
+        background-color: $green;
+    }
+
+    &.secondary {
+        background-color: $blue;
+    }
+
+    &:disabled {
+        background-color: #555;
+        cursor: default;
+
+        &::after {
+            display: none;
+        }
+    }
+
+    &.small {
+        font-size: 1.125em;
+    }
+
+    &.facebook {
+        background-color: #3A5795;
+    }
+}
+
+ul.objects {
+    display: flex;
+    list-style: none;
+}
+
+ul.apps {
+    display: block;
+    overflow: auto;
+
+    img {
+        background-color: $white;
+        padding: 0.5em;
+    }
+}
+
+input {
+    font-family: $paragraph;
+    font-weight: $paragraph-weight;
+    font-size: 1.25em;
+    padding: 0.333em 0.75em;
+    margin-bottom: 0.5em;
+    border: 0.1rem solid rgba($black, 0.5);
+    border-radius: 0.1em;
+
+    &.big {
+        font-size: 1.5em;
+        padding: 0.94em;
+    }
+
+    &[type="checkbox"] {
+        position: relative;
+        width: 1.25em;
+        height: 1.25em;
+        top: 0.25em;
+    }
+}
+
+textarea {
+    display: block;
+    width: 100%;
+    min-height: 5em;
+    font-family: $paragraph;
+    font-weight: $paragraph-weight;
+    font-size: 1.5em;
+    color: $black;
+    padding: 0.5em;
+    outline: none;
+    border-radius: 0.2rem;
+    background-color: rgba($white, 0.85);
+
+    &:focus {
+        background-color: $white;
+    }
+
+    &.long {
+        height: 10em;
+    }
+}
+
+ul.select-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+
+    li {
+        flex: 1;
+        margin: 0.5em;
+        width: auto;
+    }
+
+    &.inactive li {
+        overflow: visible;
+    }
+
+    h3 {
+        margin: 1em 0;
+        font-size: 2em;
+    }
+
+    a {
+        white-space: nowrap;
+        background-color: $error;
+        height: 2.475em;
+        border-radius: inherit;
+
+        .stats {
+            position: relative;
+            font-family: $monospace;
+        }
+
+        .stat-bar {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 2.475em;
+            background-color: $success;
+        }
+    }
+}
+
+.screenshots {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 4em;
+
+    li {
+        position: relative;
+        width: 20em;
+        overflow: hidden;
+        border-radius: 0.333rem;
+        border: 0.05em solid rgba($black, 0.1);
+        margin: 0.5em;
+
+        &:hover {
+            img {
+                object-position: right bottom;
+            }
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            font-family: $title;
+            font-weight: $title-weight;
+            letter-spacing: 0.0333em;
+            font-size: 1.75em;
+            margin: 0;
+            padding: 0.5em;
+            text-decoration: none;
+            color: $black;
+
+            &::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+            }
+        }
+    }
+
+    &.scroll {
+        display: block;
+        white-space: nowrap;
+        overflow: auto;
+        padding: 0;
+        margin-bottom: 0;
+
+        .screenshot {
+            height: 10em;
+
+            &::after {
+                background-color: $green;
+            }
+        }
+
+        li {
+            width: 11em;
+            display: inline-block;
+            opacity: 0.5;
+
+            &.highlight {
+                opacity: 1;
+
+                .screenshot::after {
+                    background-color: $blue;
+                }
+            }
+
+            a {
+                font-size: 1.25em;
+
+                h3, h4 {
+                    margin-bottom: 0;
+                }
+            }
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+.screenshot {
+    position: relative;
+    background-color: $mid-gray;
+    overflow: hidden;
+    margin: 0;
+    height: 15em;
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: $blue;
+        opacity: 0.3333;
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: left top;
+        transition: object-position 250ms linear;
+    }
+}
+
+a.screenshot {
+    display: inline-block;
+    width: 10em;
+    height: 8em;
+    box-shadow: 0 0 1.5em -0.5em $black;
+}
+
+.no-value {
+    color: $mid-gray;
+}
+
+.variable, .formatter {
+    font-family: $monospace;
+    background-color: transparent;
+    border: 0;
+    color: $red;
+    padding: 0;
+    margin: 0;
+    font-size: 1em;
+    border-radius: 0;
+}
+
+.formatter {
+    color: $black;
+    border: 1px solid $orange;
+    background-color: rgba($orange, 0.2);
+    padding: 0 0.2em;
+}
+
+input.formatter {
+    color: $white;
+}
+
+.example {
+    color: $mid-gray;
+    font-style: italic;
+}
+
+.key-part {
+    font-size: 0.8em;
+    opacity: 0.5;
+
+    .indent {
+        position: relative;
+        white-space: pre;
+
+        &::after {
+            content: '└';
+            position: absolute;
+            right: 0.5em;
+            opacity: 0.5;
+        }
+    }
+
+    &:first-child {
+        font-weight: bold;
+    }
+    
+    &.primary {
+        opacity: 1;
+    }
+
+    &.sub-key {
+        opacity: 1;
+        color: $blue;
+        font-style: italic;
+    }
+
+    #translation-list tr:hover & {
+        opacity: 1;
+    }
+}
+
+#translator {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+
+    background-color: rgba($black, 0.5);
+
+    &.open, &.opening {
+        display: block;
+        display: flex;
+    }
+
+    .dlg {
+        display: none;
+
+    }
+
+    &.open .dlg {
+        display: block;
+    }
+
+    &.opening .dlg::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: rgba($white, 0.25);
+    }
+
+    .translation-form {
+        background-color: $black;
+        width: 100%;
+        padding: 1em 1em 0;
+        color: $white;
+    }
+
+    form {
+        max-width: none;
+        margin: 0;
+    }
+
+    .input {
+        max-height: 15em;
+        background-color: lighten($black, 5%);
+        font-family: $monospace;
+        padding: 1em;
+        outline: 0;
+        overflow: auto;
+        clear: both;
+        color: $yellow;
+    }
+
+    h4 {
+        display: inline-block;
+        margin-right: 0.5em;
+    }
+
+    .demo {
+        display: none;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1001;
+        background-color: $black;
+        color: $white;
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            margin: auto;
+            background-color: $white;
+
+            &.mobile {
+                width: 480px;
+            }
+        }
+
+        &.open {
+            display: block;
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    .actions {
+        align-items: flex-end;
+    }
+}
+
+#watch-translation {
+    display: inline-block;
+}
+
+#watch-locale {
+    text-align: center;
+}
+
+.dlg {
+    position: relative;
+    flex: 1;
+    max-width: 80%;
+    max-height: 80%;
+    margin: auto;
+    box-shadow: 0 0 1.5em -0.5em $black;
+    border-radius: 0.5em;
+    overflow: hidden;
+    background-color: $black;
+
+    .dlg-inner {
+        background-color: $white;
+        transition: opacity 150ms ease-in-out;
+    }
+
+    h1 {
+        font-size: 1.5em;
+        text-align: center;
+        text-shadow: 0 0 0.333em rgba($black, 0.5);
+        margin: 0;
+        padding: 0.5em 0;
+    }
+
+    header {
+        background-color: $blue;
+        color: $white;
+        padding: 0 3.5em;
+
+        .close, .prev-next {
+            position: absolute;
+            top: 0;
+        }
+
+        .close, .prev-next a {
+            color: inherit;
+            text-decoration: none;
+
+            &:hover {
+                background-color: rgba($white, 0.15)
+            }
+        }
+
+        .close {
+            right: 0;
+            font-size: 4.5em;
+            line-height: 0;
+            padding: 1.6rem 0.1em 2.2rem;
+        }
+
+        .prev-next {
+            left: 0;
+
+            a {
+                padding: 0.8rem 0.6667rem 0.85rem;
+                font-size: 1.75em;
+                line-height: 3.75rem;
+            }
+        }
+    }
+
+    .exit-demo {
+        color: inherit;
+        font-size: 4.5em;
+        line-height: 0.7em;
+        text-decoration: none;
+
+        &:active, &:focus, &:visited {
+            color: inherit;
+        }
+
+        &:hover {
+            color: $mid-gray;
+        }
+    }
+
+    .mobile-toggle {
+        width: 0.65em;
+        height: 1em;
+        font-size: 2em;
+        border-style: solid;
+        border-width: 0.15em 0.05em 0.2em;
+        border-radius: 0.125em;
+    }
+
+    .exit-demo,
+    .mobile-toggle {
+        display: inline-block;
+        color: $white;
+        margin-left: 0.15em;
+        color: inherit;
+
+        &:hover {
+            color: $mid-gray;
+        }
+    }
+    
+    .buttons {
+        float: right;
+    }
+
+    .controls {
+        padding: 1em;
+    }
+
+    .details {
+        h3, h4 {
+            display: inline-block;
+            margin: 0.25em 0.5em 0.25em 0;
+        }
+
+        .title, .description {
+            font-size: 1.25em;
+        }
+    }
+
+    .content {
+        padding: 1em;
+    }
+
+    .working & {
+        pointer-events: none;
+        
+        .dlg-inner {
+            opacity: 0.5;
+        }
+    }
+}
+
+.float-right {
+    float: right;
+}
+
+$toolbar-width: 30em;
+
+#page-preview {
+    position: absolute;
+    display: flex;
+    height: 100%;
+    height: calc(100% - 3.1em);
+    width: 100%;
+    background-color: $mid-gray;
+
+    h2 {
+        font-size: 1.5em;
+        -webkit-text-fill-color: inherit;
+        -webkit-text-stroke: inherit;
+        text-align: center;
+    }
+
+    .preview {
+        display: inline-block;
+        // position: absolute;
+        height: 100%;
+        margin: 0 $toolbar-width 0 0;
+        overflow: auto;
+        margin: 0;
+
+        img {
+            display: block;
+        }
+    }
+
+    .toolbar {
+        // position: absolute;
+        top: 0;
+        right: 0;
+        min-width: $toolbar-width;
+        height: 100%;
+        color: $white;
+        background-color: $black;
+        overflow: auto;
+        flex: 1;
+
+        #toolbar-header {
+            display: flex;
+            align-items: center;
+            background-color: $blue;
+
+            a.button {
+                margin: 0;
+                font-size: 1em;
+                border-radius: 0;
+                color: transparent;
+                width: 2em;
+                align-self: stretch;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    width: 1em;
+                    height: 1em;
+                    top: 0;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    margin: auto;
+                    border: 0.1em solid $white;
+                    border-width: 0.1em 0 0 0.1em;
+                    transform: rotate(-45deg);
+                }
+
+                &:last-child::before {
+                    border-width: 0 0.1em 0.1em 0;
+                }
+            }
+
+            h2 {
+                flex: 1;
+                margin: 0;
+            }
+        }
+
+        section {
+            padding: 1em;
+            max-width: 50em;
+            margin: 0 auto;
+        }
+    }
+}
+
+.flex {
+    display: flex;
+    align-items: baseline;
+
+    .stretch {
+        flex: 1;
+        margin-right: 1em;
+    }
+
+    label:first-child {
+        margin-right: 1em;
+    }
+}
+
+.notice {
+    max-width: 50em;
+    text-align: center;
+    padding: 1em;
+    border: 0.1em solid;
+    font-weight: 700;
+    font-size: 1.1em;
+    margin: 0 auto 2em;
+
+    &.warning {
+        border-color: $warning;
+        background-color: rgba($warning, 0.2);
+    }
+
+    &.success {
+        border-color: $success;
+        background-color: rgba($success, 0.2);
+    }
+
+    &.error {
+        border-color: $error;
+        background-color: rgba($error, 0.2);
+    }
+}
+
+#watch-discussion {
+    float: right;
+    margin-top: 0.4em;
+
+    input {
+        width: 0.95em;
+        height: 1em;
+    }
+}

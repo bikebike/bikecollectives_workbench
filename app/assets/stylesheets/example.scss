@@ -1,0 +1,25 @@
+.lingua-franca-highlighter {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    z-index: 10000;
+    pointer-events: none;
+    mix-blend-mode: exclusion;
+    transform: translate(50%, 50%);
+    transition: transform ease-in-out 150ms;
+
+    svg rect {
+        stroke: #FFF;
+        stroke-width: 3;
+        stroke-dasharray: 10, 5;
+        fill: transparent;
+        animation: 1s linear 0s infinite indicator;
+        vector-effect: non-scaling-stroke;
+    }
+}
+
+@keyframes indicator {
+    to { stroke-dashoffset: -15; }
+}

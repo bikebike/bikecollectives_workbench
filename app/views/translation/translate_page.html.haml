@@ -1,0 +1,8 @@
+%section.title
+  %h2
+    ="#{@group.to_s.titlecase}: #{@page.to_s.titlecase}"
+    .subtitle="#{@language} Translations"
+
+%section.table
+  .row
+    = render 'translations'

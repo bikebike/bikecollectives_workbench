@@ -1,0 +1,46 @@
+%section.title
+  %h2
+    %img{src: File.join(@application.url, 'assets', 'logo.png')}
+    = @application.name
+
+%section.pages
+  .row
+    = form_tag watch_translation_path(@application.slug, '-'), id: 'watch-discussion' do
+      = label_tag :watch, 'Follow application discussions'
+      = check_box_tag :watch, '1', current_user.following_page?(@application.id), class: :stretch
+    %h3.section-title Page Groups
+    %ul.screenshots
+      - @pages.each do |controller, actions|
+        %li
+          %figure.screenshot
+            %img{src: screenshot_path(@application.slug, controller, actions.first, 0, :desktop)}
+          = link_to controller.titlecase, page_group_path(@application.slug, controller), class: :cover
+    
+%section.options
+  .row
+    %h3.section-title Translations
+    %ul.select-list.active
+      - @locales.each do |locale, stats|
+        %li
+          %h3=@languages[locale.to_s]
+          = link_to translate_locale_path(@application.slug, locale) do
+            .stat-bar{style: "width: #{(stats[:completion] * 100)}%"}
+            .stats=(stats[:completion] * 100).round(2).to_s + '%'
+
+:javascript
+  (function() {
+    var form = document.getElementById('watch-discussion'), checkbox = document.getElementById('watch');
+    checkbox.onchange = function() {
+        var request = new XMLHttpRequest();
+        request.onreadystatechange = function() {
+            if (request.readyState == 4) {
+                if (request.status == 200) {
+                    var result = JSON.parse(request.responseText);
+                    checkbox.checked = result.watching;
+                }
+            }
+        }
+        request.open('POST', form.getAttribute('action'), true);
+        request.send(new FormData(form));
+    };
+  })();

@@ -1,0 +1,3 @@
+- @js = javascript_include_tag :example
+- @css = stylesheet_link_tag :example
+= @html.gsub(/<\/head>/, "#{@js}#{@css}</head>".html_safe).html_safe

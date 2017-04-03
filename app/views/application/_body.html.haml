@@ -1,0 +1,13 @@
+%main
+  - if flash[:notice].present?
+    .notice{class: flash[:notice][:status]}=flash[:notice][:message]
+  = yield
+
+%footer
+  .row
+    .user-controls
+      - if logged_in?
+        = current_user.name
+        &nbsp;|&nbsp;
+        = link_to 'Sign out', logout_path, class: 'logout'
+    .copyright="&copy;#{Date.today.strftime("%Y")} Bike Collective Network".html_safe

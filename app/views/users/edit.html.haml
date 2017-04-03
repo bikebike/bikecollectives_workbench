@@ -1,0 +1,17 @@
+%section.options
+  .row
+    %h2=@user.name
+    = form_tag :save_user, class: 'main-form' do
+      = hidden_field_tag :id, @user.id
+      .flex
+        = label_tag :email, 'Email'
+        = email_field_tag :email, @user.email, class: :stretch
+      .flex
+        = label_tag :name, 'Name'
+        = text_field_tag :name, @user.firstname, class: :stretch
+      %div
+        = label_tag :has_workbench_access, 'Workbench Access'
+        = check_box_tag :has_workbench_access, '1', @user.has_workbench_access == true, class: :stretch
+
+      .actions.right
+        = button_tag 'Save'

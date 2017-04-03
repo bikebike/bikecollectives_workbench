@@ -1,0 +1,10 @@
+%h2 Applications
+
+%ul.apps.objects
+  - @applications.each do |app|
+    %li
+      %h3=app.name
+      %img{src: File.join(app.url, 'assets', 'logo.png')}
+      .actions
+        = link_to 'Edit', edit_application_path(app.slug), class: :button
+        = link_to 'Translations', translate_path(app.slug), class: :button

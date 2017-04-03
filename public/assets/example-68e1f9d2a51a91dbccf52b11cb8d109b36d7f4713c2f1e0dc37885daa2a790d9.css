@@ -1,0 +1,49 @@
+/* line 5, C:/Users/Godwin/Code/bikecollectives_workbench/app/assets/stylesheets/example.scss */
+.lingua-franca-highlighter {
+  position: absolute;
+  z-index: 10000;
+  pointer-events: none;
+  mix-blend-mode: color-burn;
+  transform: scale(1);
+  animation: 1s ease-in-out 0s infinite alternate indicator;
+}
+/* line 13, C:/Users/Godwin/Code/bikecollectives_workbench/app/assets/stylesheets/example.scss */
+.lingua-franca-highlighter div:before,
+.lingua-franca-highlighter div:after, .lingua-franca-highlighter:before, .lingua-franca-highlighter:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border: 3px solid rgba(0, 0, 0, 0.5);
+  width: 15px;
+  height: 15px;
+  border-width: 3px 0 0 3px;
+}
+/* line 27, C:/Users/Godwin/Code/bikecollectives_workbench/app/assets/stylesheets/example.scss */
+.lingua-franca-highlighter div:before {
+  border-width: 3px 0 0 3px;
+  left: 0;
+  top: 0;
+}
+/* line 33, C:/Users/Godwin/Code/bikecollectives_workbench/app/assets/stylesheets/example.scss */
+.lingua-franca-highlighter div:after {
+  top: 0;
+  border-width: 3px 3px 0 0;
+}
+/* line 38, C:/Users/Godwin/Code/bikecollectives_workbench/app/assets/stylesheets/example.scss */
+.lingua-franca-highlighter:before {
+  left: 0;
+  border-width: 0 0 3px 3px;
+}
+/* line 43, C:/Users/Godwin/Code/bikecollectives_workbench/app/assets/stylesheets/example.scss */
+.lingua-franca-highlighter:after {
+  bottom: 0;
+  right: 0;
+  border-width: 0 3px 3px 0;
+}
+
+@keyframes indicator {
+  to {
+    transform: scale(1.25);
+  }
+}

@@ -1,0 +1,22 @@
+%table#translation-list{data: { translator: { path: translator_path(@application.slug, @locale, @group || '-', @page || '-', ':key') } } }
+  %thead
+    %tr
+      %th Key
+      %th Value
+  %tbody
+    - @keys.each do |key|
+      - if (@vars[key] && @vars[key].include?('count')) || (@translations[key] && @translations[key].is_a?(Hash))
+        - plurals(@translations[key], @locale).each do |subkey, translation|
+          %tr{tabindex: 0, data: {key: "#{key}.#{subkey}", demokey: key}}
+            %th.code=format_key(key, subkey)
+            %td
+              .value
+                - if @translations[key].present? && @translations[key][subkey].present?
+                  = format_value(@translations[key][subkey])
+      - else
+        %tr{tabindex: 0, data: {key: key}}
+          %th.code=format_key(key)
+          %td
+            .value
+              - if @translations[key].present?
+                = format_value(@translations[key])

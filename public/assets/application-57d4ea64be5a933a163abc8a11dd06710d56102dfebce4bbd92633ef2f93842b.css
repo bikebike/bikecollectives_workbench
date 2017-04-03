@@ -1,0 +1,282 @@
+@charset "UTF-8";
+/* line 31, C:/Users/Godwin/Code/bikecollectives_workbench/app/assets/stylesheets/application.scss */
+html {
+  font-family: "Rasa", serif;
+  color: #444;
+  background-color: #f2ece6;
+}
+
+/* line 37, C:/Users/Godwin/Code/bikecollectives_workbench/app/assets/stylesheets/application.scss */
+body {
+  padding: 0;
+  margin: 0;
+}
+
+/* line 42, C:/Users/Godwin/Code/bikecollectives_workbench/app/assets/stylesheets/application.scss */
+.row {
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+/* line 47, C:/Users/Godwin/Code/bikecollectives_workbench/app/assets/stylesheets/application.scss */
+body > header {
+  padding: 1em;
+  margin: 0 0 4em;
+  background-color: #94A89A;
+  color: #F8F8F8;
+}
+/* line 53, C:/Users/Godwin/Code/bikecollectives_workbench/app/assets/stylesheets/application.scss */
+body > header h1 {
+  margin: 0;
+}
+
+/* line 58, C:/Users/Godwin/Code/bikecollectives_workbench/app/assets/stylesheets/application.scss */
+p {
+  font-size: 1.25em;
+  line-height: 1.4em;
+}
+
+/* line 63, C:/Users/Godwin/Code/bikecollectives_workbench/app/assets/stylesheets/application.scss */
+h1, h2, h3, h4, h5, h6, label, th, button, figcaption {
+  font-family: "Alfa Slab One", cursive;
+  margin: 0 0 1em;
+  font-weight: normal;
+  letter-spacing: 0.0333em;
+}
+
+/* line 70, C:/Users/Godwin/Code/bikecollectives_workbench/app/assets/stylesheets/application.scss */
+pre, code, .code {
+  font-family: "Space Mono", monospace;
+}
+
+/* line 74, C:/Users/Godwin/Code/bikecollectives_workbench/app/assets/stylesheets/application.scss */
+th {
+  text-align: left;
+  vertical-align: top;
+}
+
+/* line 79, C:/Users/Godwin/Code/bikecollectives_workbench/app/assets/stylesheets/application.scss */
+td {
+  vertical-align: top;
+}
+
+/* line 84, C:/Users/Godwin/Code/bikecollectives_workbench/app/assets/stylesheets/application.scss */
+table ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+/* line 91, C:/Users/Godwin/Code/bikecollectives_workbench/app/assets/stylesheets/application.scss */
+table li:before {
+  content: '▪';
+  margin-right: 0.5em;
+}
+
+/* line 98, C:/Users/Godwin/Code/bikecollectives_workbench/app/assets/stylesheets/application.scss */
+.form-elements {
+  display: table;
+  width: 100%;
+}
+
+/* line 103, C:/Users/Godwin/Code/bikecollectives_workbench/app/assets/stylesheets/application.scss */
+.form-element {
+  display: table-row;
+}
+
+/* line 107, C:/Users/Godwin/Code/bikecollectives_workbench/app/assets/stylesheets/application.scss */
+.form-element label {
+  display: table-cell;
+  width: 1px;
+  padding-right: 1em;
+}
+
+/* line 113, C:/Users/Godwin/Code/bikecollectives_workbench/app/assets/stylesheets/application.scss */
+.form-element input {
+  display: table-cell;
+  width: 100%;
+}
+
+/* line 118, C:/Users/Godwin/Code/bikecollectives_workbench/app/assets/stylesheets/application.scss */
+.actions {
+  margin-top: 1em;
+  text-align: right;
+}
+
+/* line 123, C:/Users/Godwin/Code/bikecollectives_workbench/app/assets/stylesheets/application.scss */
+form {
+  max-width: 50em;
+  margin: 0 auto;
+}
+
+/* line 128, C:/Users/Godwin/Code/bikecollectives_workbench/app/assets/stylesheets/application.scss */
+button, .button {
+  text-decoration: none;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  font-size: 1.25em;
+  padding: 0.25em 0.5em;
+  background-color: #9CB380;
+  color: #FFF;
+  border: 0.15em solid rgba(255, 255, 255, 0.5);
+  border-radius: 0.4em;
+  box-shadow: 0 0 2em -0.75em #000;
+}
+
+/* line 142, C:/Users/Godwin/Code/bikecollectives_workbench/app/assets/stylesheets/application.scss */
+ul.objects {
+  display: flex;
+  list-style: none;
+}
+
+/* line 147, C:/Users/Godwin/Code/bikecollectives_workbench/app/assets/stylesheets/application.scss */
+.apps img {
+  background-color: #FFF;
+  padding: 0.5em;
+}
+
+/* line 152, C:/Users/Godwin/Code/bikecollectives_workbench/app/assets/stylesheets/application.scss */
+input {
+  font-family: "Rasa", serif;
+  font-size: 1.25em;
+  padding: 0.25em 0.5em;
+  margin-bottom: 0.5em;
+  border: 0;
+  box-shadow: 0 0 0.5em -0.25em #000;
+}
+
+/* line 161, C:/Users/Godwin/Code/bikecollectives_workbench/app/assets/stylesheets/application.scss */
+.select-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+/* line 167, C:/Users/Godwin/Code/bikecollectives_workbench/app/assets/stylesheets/application.scss */
+.select-list li {
+  flex: 1;
+  margin: 0.5em;
+  text-align: center;
+}
+/* line 173, C:/Users/Godwin/Code/bikecollectives_workbench/app/assets/stylesheets/application.scss */
+.select-list a {
+  display: block;
+  font-size: 1.25em;
+  text-decoration: none;
+  color: #FFF;
+  background-color: #444;
+  box-shadow: 0 0 0.5em -0.25em #444;
+  padding: 0.25em 0.5em;
+  -webkit-text-stroke: 0.025em rgba(0, 0, 0, 0.5);
+  text-stroke: 0.025em rgba(0, 0, 0, 0.5);
+  white-space: nowrap;
+}
+/* line 186, C:/Users/Godwin/Code/bikecollectives_workbench/app/assets/stylesheets/application.scss */
+.select-list a:hover {
+  box-shadow: 0 0 1em -0.25em #444;
+}
+/* line 190, C:/Users/Godwin/Code/bikecollectives_workbench/app/assets/stylesheets/application.scss */
+.select-list a .title {
+  font-family: "Alfa Slab One", cursive;
+}
+/* line 194, C:/Users/Godwin/Code/bikecollectives_workbench/app/assets/stylesheets/application.scss */
+.select-list a .stats {
+  font-family: "Space Mono", monospace;
+  font-size: 1.333em;
+}
+/* line 200, C:/Users/Godwin/Code/bikecollectives_workbench/app/assets/stylesheets/application.scss */
+.select-list.active a, .select-list li.active a {
+  background-color: #9CB380;
+}
+/* line 204, C:/Users/Godwin/Code/bikecollectives_workbench/app/assets/stylesheets/application.scss */
+.select-list.inactive a, .select-list li.inactive a {
+  background-color: #A44A3F;
+}
+
+/* line 209, C:/Users/Godwin/Code/bikecollectives_workbench/app/assets/stylesheets/application.scss */
+.figures {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+/* line 214, C:/Users/Godwin/Code/bikecollectives_workbench/app/assets/stylesheets/application.scss */
+.figures li {
+  flex: 1;
+}
+/* line 218, C:/Users/Godwin/Code/bikecollectives_workbench/app/assets/stylesheets/application.scss */
+.figures figure {
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  transition: background-size 150ms ease-in-out;
+  background-position: center top;
+  width: 20em;
+  height: 20em;
+  position: relative;
+}
+/* line 228, C:/Users/Godwin/Code/bikecollectives_workbench/app/assets/stylesheets/application.scss */
+.figures figure:hover {
+  background-size: auto 100%;
+}
+/* line 233, C:/Users/Godwin/Code/bikecollectives_workbench/app/assets/stylesheets/application.scss */
+.figures figure:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  background-color: #9CB380;
+  opacity: 0.5;
+}
+/* line 245, C:/Users/Godwin/Code/bikecollectives_workbench/app/assets/stylesheets/application.scss */
+.figures figure .cover {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 3;
+  box-shadow: 0 0 1.5em -0.5em #444;
+}
+/* line 268, C:/Users/Godwin/Code/bikecollectives_workbench/app/assets/stylesheets/application.scss */
+.figures figcaption {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 0;
+  right: 0;
+  margin: 0;
+  text-align: center;
+  background-color: #444;
+  color: #FFF;
+  font-size: 1.5em;
+  box-shadow: 0 0 1.5em -0.5em #444;
+}
+
+/* line 283, C:/Users/Godwin/Code/bikecollectives_workbench/app/assets/stylesheets/application.scss */
+.no-value {
+  color: #888;
+}
+
+/* line 287, C:/Users/Godwin/Code/bikecollectives_workbench/app/assets/stylesheets/application.scss */
+.variable, .formatter {
+  font-family: "Space Mono", monospace;
+  background-color: rgba(68, 68, 68, 0.5);
+  color: #f2ece6;
+  padding: 0.1em 0.333em;
+  font-size: 0.8em;
+  border-radius: 0.25em;
+  cursor: default;
+}
+
+/* line 297, C:/Users/Godwin/Code/bikecollectives_workbench/app/assets/stylesheets/application.scss */
+.formatter {
+  background-color: #94a89a;
+}
+
+/* line 301, C:/Users/Godwin/Code/bikecollectives_workbench/app/assets/stylesheets/application.scss */
+.example {
+  color: #888;
+  font-style: italic;
+}

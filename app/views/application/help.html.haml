@@ -1,0 +1,18 @@
+%section.title
+  %h2
+    - if @page
+      ="#{@page.to_s.titlecase} Help"
+    - else
+      Help
+
+%section.help
+  .row
+    - if @page
+      = render "application/help/#{@page}"
+    - else
+      %h3 Contents
+      %nav
+        %ul
+          - @pages.each do |help|
+            %li
+              %h4=link_to help.to_s.titlecase, help_url(help)

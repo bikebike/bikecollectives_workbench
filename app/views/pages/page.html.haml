@@ -1,0 +1,20 @@
+%section.title
+  %h2=@page.to_s.titlecase
+
+%section.table
+  .row
+    %table#screenshots
+      - if @variants.length > 1
+        %thead
+          %tr
+            - @variants.each do |variant|
+              %th=variant.to_s.titlecase
+      %tbody
+        - path_args = [@application.slug, @group, @page]
+        - @examples.each do |example|
+          %tr
+            - @variants.each do |variant|
+            - example_path_args = path_args + [example, variant]
+              %td
+                = link_to page_preview_path(*example_path_args) do
+                  %img{src: screenshot_path(*example_path_args)}

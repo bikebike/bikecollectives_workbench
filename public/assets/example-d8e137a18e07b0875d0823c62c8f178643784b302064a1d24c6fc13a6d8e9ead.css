@@ -1,0 +1,14 @@
+/* line 5, C:/Users/Godwin/Code/bikecollectives_workbench/app/assets/stylesheets/example.scss */
+.lingua-franca-highlighter {
+  position: absolute;
+  z-index: 10000;
+  outline: 3px solid rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  mix-blend-mode: color-burn;
+  transform: scale(1);
+  animation: 1s ease-in-out 0s infinite alternate indicator;
+}
+
+@keyframes indicator {
+  to-transform: scale(1.5);
+}

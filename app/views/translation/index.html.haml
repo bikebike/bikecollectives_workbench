@@ -1,0 +1,21 @@
+%section.title
+  %h2="Translate #{@application.name}"
+
+%section.options
+  .row
+    %h3 Active Locales
+    %ul.select-list.active
+      - @locales.each do |locale, stats|
+        %li
+          %h3=@languages[locale.to_s]
+          = link_to translate_locale_path(@application.slug, locale) do
+            .stat-bar{style: "width: #{(stats[:completion] * 100)}%"}
+            .stats=(stats[:completion] * 100).round(2).to_s + '%'
+
+  .row
+    %h3 Inactive Locales
+    %ul.select-list.inactive
+      - @all_locales.each do |locale|
+        %li
+          = link_to translate_locale_path(@application.slug, locale) do
+            .title=@languages[locale.to_s]
