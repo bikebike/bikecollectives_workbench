@@ -67,7 +67,7 @@ class PagesController < ApplicationController
     followers = PageFollower.where(application_id: @application.id, group: @group, page: @page, index: params[:index], variant: params[:variant]) + PageFollower.where(application_id: @application.id, group: @group, page: '-') + PageFollower.where(application_id: @application.id, group: '-', page: '-')
     followers.map(&:user_id).uniq.each do |user_id|
       unless user_id == current_user.id
-        UserMailer.page_comment(User.find(user_id), current_user, params[:comment], "#{@page.to_s.titlecase} #{@group == 'email' ? 'email' : 'page'}", page_preview_url(@application.slug, @group, @page, params[:index], params[:variant])).deliver!
+        UserMailer.page_comment(User.find(user_id), current_user, params[:comment], "#{@page.to_s.titlecase} #{@group == 'email' ? 'email' : 'page'}", page_preview_url(@application.slug, @group, @page, params[:index], params[:variant])).deliver_now
       end
     end
 

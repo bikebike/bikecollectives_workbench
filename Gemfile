@@ -24,6 +24,7 @@ gem 'premailer-rails'
 gem 'sidekiq'
 gem 'letter_opener'
 gem 'launchy'
+gem 'geocoder'
 
 if Dir.exists?('../lingua_franca')
   gem 'lingua_franca', path: '../lingua_franca'

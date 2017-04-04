@@ -66,7 +66,7 @@ class TranslationController < ApplicationController
     language = YAML.load_file(I18n.config.languages_file)['en']['languages'][params[:locale]]
     TranslationFollower.where(application_id: @application.id).each do |follower|
       unless follower.user_id == current_user.id
-        UserMailer.translation_changed(current_user, language, params[:key], old_translation, translation).deliver!
+        UserMailer.translation_changed(current_user, language, params[:key], old_translation, translation).deliver_now
       end
     end
 
