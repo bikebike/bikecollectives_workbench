@@ -28,7 +28,7 @@ gem 'launchy'
 if Dir.exists?('../lingua_franca')
   gem 'lingua_franca', path: '../lingua_franca'
 else
-  gem 'lingua_franca', git: 'https://github.com/lingua-franca/lingua_franca.git'
+  gem 'lingua_franca', git: 'https://github.com/lingua-franca/lingua_franca.git', :branch => '2017'
 end
 
 if Dir.exists?('../bikecollectives_core')

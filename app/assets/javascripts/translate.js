@@ -218,7 +218,8 @@ Translator.prototype.insert = function(text) {
 Translator.prototype.setCaretPosition = function(pos, element) {
     var el = element || this.input;
     // Loop through all child nodes
-    for (var node of el.childNodes) {
+    for (var i = 0; i < el.childNodes.length; i++) {
+        var node = el.childNodes[i];
         if (node.nodeType === Node.TEXT_NODE) { // we have a text node
             if (node.length >= pos) {
                 // finally add our range
