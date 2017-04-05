@@ -3,7 +3,7 @@ require 'redcarpet'
 class UserMailer < ActionMailer::Base
   before_filter :set_host
 
-  default from: "Bike Collectives Workbench <godwin@bikebike.org>"
+  default from: "Bike Collectives Workbench <info@bikecollectives.org>"
 
   def email_confirmation(confirmation)
     @confirmation = EmailConfirmation.find(confirmation) if confirmation.present?

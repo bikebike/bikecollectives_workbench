@@ -88,15 +88,16 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: 'smtp.gmail.com',
-    domain: 'localhost:3000',
-    port: 587,
-    authentication: :plain,
+    address: 'mail.bikecollectives.org',
+    domain: 'bikecollectives.org',
+    port: 465,
     enable_starttls_auto: true,
+    openssl_verify_mode: 'none',
+    tls: true,
+    authentication: :plain,
     user_name: ENV['MAILER_USER'],
     password: ENV['MAILER_PASSWORD']
   }
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_deliveries = true
-  I18n.config.language_detection_method = I18n::Config::DETECT_LANGUAGE_FROM_SUBDOMAIN
 end
