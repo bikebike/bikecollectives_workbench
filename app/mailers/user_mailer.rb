@@ -41,7 +41,7 @@ class UserMailer < ActionMailer::Base
   private
   def set_host(*args)
     @host = if Rails.env.production?
-              "https://Workbench.bikecollectives.org"
+              "https://workbench.bikecollectives.org"
             else
               @host = UserMailer.default_url_options[:host]
             end
