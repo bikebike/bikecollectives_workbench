@@ -7,7 +7,7 @@ class UserController < ApplicationController
     current_user.languages = (params[:languages] || { I18n.locale.to_s => true }).keys
     current_user.is_subscribed = params[:email_subscribe].present?
     current_user.save
-    redirect_to settings_path
+    redirect_to settings_path(trailing_slash: true)
   end
 
   def do_confirm
@@ -17,7 +17,7 @@ class UserController < ApplicationController
         params[:dest] || (
           request.present? && request.referer.present? ?
             request.referer.gsub(/^.*?\/\/.*?\//, '/') :
-            settings_path))
+            settings_path(trailing_slash: true)))
   end
 
   def user_logout
@@ -77,7 +77,7 @@ class UserController < ApplicationController
         user = User.create(email: email, firstname: user_info['name'], fb_id: fb_id, locale: I18n.locale)
       else
         session[:oauth_update_user_info] = user_info
-        return redirect_to oauth_update_path
+        return redirect_to oauth_update_path(trailing_slash: true)
       end
     elsif user.fb_id.blank? || user.email.blank?
       user.email = email
@@ -90,7 +90,7 @@ class UserController < ApplicationController
       auto_login(user)
     end
     
-    oauth_last_url = (session[:oauth_last_url] || home_path)
+    oauth_last_url = (session[:oauth_last_url] || home_path(trailing_slash: true))
     session.delete(:oauth_last_url)
     redirect_to oauth_last_url
   end
@@ -103,14 +103,14 @@ class UserController < ApplicationController
   
   def save
     unless params[:email].present?
-      return redirect_to oauth_update_path
+      return redirect_to oauth_update_path(trailing_slash: true)
     end
     
     user = User.find_user(params[:email])
 
     if user.present?
       flash[:error] = :exists
-      return redirect_to oauth_update_path
+      return redirect_to oauth_update_path(trailing_slash: true)
     end
     
     # create the user
@@ -121,7 +121,7 @@ class UserController < ApplicationController
     auto_login(user)
 
     # clear out the session
-    oauth_last_url = (session[:oauth_last_url] || home_path)
+    oauth_last_url = (session[:oauth_last_url] || home_path(trailing_slash: true))
     session.delete(:oauth_last_url)
     session.delete(:oauth_update_user_info)
 
@@ -140,7 +140,7 @@ class UserController < ApplicationController
 
     # build the callback url
     Sorcery::Controller::Config.send(params[:provider]).callback_url =
-        "#{protocol}#{request.env['HTTP_HOST']}/oauth/callback?provider=facebook"
+        "#{protocol}#{request.env['HTTP_HOST']}/oauth/callback/?provider=facebook"
   end
 
 end
