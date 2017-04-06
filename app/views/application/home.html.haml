@@ -27,4 +27,4 @@
           = button_tag 'Continue', value: :confirm_email
         %div.flex
           = label_tag 'facebook-login', 'Or through your Facebook account', class: :stretch
-          = link_to 'Facebook Sign In', auth_at_provider_path(provider: :facebook, dest: home_path), class: [:button, :facebook], id: 'facebook-login'
+          = link_to 'Facebook Sign In', auth_at_provider_path(provider: :facebook, dest: home_path, trailing_slash: true), class: [:button, :facebook], id: 'facebook-login'
