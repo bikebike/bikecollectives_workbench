@@ -19,7 +19,7 @@
       %h2 Welcome
       %p
         Welcome to the Bike Collective Workbench. Here you can edit translations and talk about new developments for our websites. To access these tools, please first sign in. If you have not already, you may need to request access after signing in.
-      = form_tag do_confirm_path, class: 'main-form' do
+      = form_tag do_confirm_path(trailing_slash: true), class: 'main-form' do
         = label_tag :email, 'Sign in by confirming your email address:'
         %div.flex
           = hidden_field_tag :dest, home_path
