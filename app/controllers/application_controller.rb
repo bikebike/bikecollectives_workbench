@@ -49,7 +49,7 @@ private
       case "#{params[:controller]}##{params[:action]}"
       when 'application#home'
         do_403 if logged_in?
-      when 'application#access_request', 'user#do_confirm', 'user#confirm'
+      when 'application#access_request', 'user#do_confirm', 'user#confirm', 'user#oauth', 'user#callback'
         # this is a public page
       else
         do_403
