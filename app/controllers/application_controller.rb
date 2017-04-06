@@ -23,7 +23,7 @@ class ApplicationController < BaseController
     current_user.workbench_access_request_date = DateTime.now
     current_user.workbench_access_request_message = params[:message]
     current_user.save!
-    UserMailer.access_request(current_user).deliver_now
+    UserMailer.access_request(current_user).deliver_now!
     redirect_to :home
   end
 
@@ -41,7 +41,7 @@ class ApplicationController < BaseController
 private
 
   def send_confirmation(confirmation)
-    UserMailer.email_confirmation(confirmation.id).deliver_now
+    UserMailer.email_confirmation(confirmation.id).deliver_now!
   end
 
   def load_app
