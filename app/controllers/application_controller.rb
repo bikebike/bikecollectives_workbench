@@ -71,9 +71,9 @@ private
             @pages[controller] |= [action]
           end
         end
-      end
 
-      @enabled_locales = LinguaFranca.enabled_locales(@application.slug, @application.path)
+        @enabled_locales = LinguaFranca.enabled_locales(@application.slug, @application.path)
+      end
     end
 
     @locale = params[:locale].to_sym if params[:locale].present?
