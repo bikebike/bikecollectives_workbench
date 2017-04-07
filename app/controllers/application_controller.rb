@@ -63,11 +63,13 @@ private
     if params[:app].present?
       @application = Application.find_by_slug(params[:app].to_sym)
 
-      LinguaFranca.get_translation_info(@application.path).each do |key, pages|
-        pages.keys.sort.each do |page|
-          controller, action = page.split(/[\/\\]/)
-          @pages[controller] ||= []
-          @pages[controller] |= [action]
+      if @application.present?
+        LinguaFranca.get_translation_info(@application.path).each do |key, pages|
+          pages.keys.sort.each do |page|
+            controller, action = page.split(/[\/\\]/)
+            @pages[controller] ||= []
+            @pages[controller] |= [action]
+          end
         end
       end
 
