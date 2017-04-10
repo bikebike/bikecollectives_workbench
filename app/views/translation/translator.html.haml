@@ -49,7 +49,7 @@
         %div
           %h4 Demo:
           %span.rendered-input
-      .input{contenteditable: :true, data: { vars: @vars.present? ? @vars.to_json : nil } }=(@translation || '').html_safe
+      .input{lang: @locale, contenteditable: :true, data: { vars: @vars.present? ? @vars.to_json : nil } }=(@translation || '').html_safe
       %script#format-names{type: :json}
         = @formats.to_json.html_safe
       = form_tag save_translation_path(@application.slug, @locale) do

@@ -147,6 +147,7 @@ Translator.prototype.save = function() {
     }
     request.open('POST', form.getAttribute('action'), true);
     request.send(new FormData(form));
+    this.close();
 };
 
 Translator.prototype.watch = function(key, doWatch) {

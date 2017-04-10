@@ -4,7 +4,7 @@
       %th Key
       %th Value
       - if @english_translations.present?
-        %th English Translation
+        %th.english English Translation
   %tbody
     - @keys.each do |key|
       - if (@vars[key] && @vars[key].include?('count')) || (@translations[key] && @translations[key].is_a?(Hash))
@@ -16,7 +16,7 @@
                 - if @translations[key].present? && @translations[key][subkey].present?
                   = format_value(@translations[key][subkey])
             - if @english_translations.present?
-              %td
+              %td.english
                 .value
                   - if @english_translations[key].present? && @english_translations[key][subkey].present?
                     = format_value(@english_translations[key][subkey])
@@ -28,7 +28,7 @@
               - if @translations[key].present?
                 = format_value(@translations[key])
           - if @english_translations.present?
-            %td
+            %td.english
               .value
                 - if @english_translations[key].present?
                   = format_value(@english_translations[key])

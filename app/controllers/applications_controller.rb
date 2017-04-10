@@ -12,9 +12,7 @@ class ApplicationsController < ApplicationController
     @locales = {}
     do_404 unless @enabled_locales.present?
     @enabled_locales.each do |locale|
-      puts " === locale_stats START: #{locale} === "
       stats = LinguaFranca.locale_stats(@application.slug, @application.path, locale)
-      puts " === locale_stats END: #{locale} === "
       @locales[locale] = {
         completion: stats[:complete] / stats[:total].to_f
       }
