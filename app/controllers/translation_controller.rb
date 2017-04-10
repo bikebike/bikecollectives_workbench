@@ -22,6 +22,9 @@ class TranslationController < ApplicationController
     add_scripts(:translate)
     @page_key = File.join(@group.to_s, @page.to_s)
     @translations = LinguaFranca.get_translations(@application.slug, @application.path, @locale)
+    unless @locale == :en
+      @english_translations = LinguaFranca.get_translations(@application.slug, @application.path, :en)
+    end
     @language = YAML.load_file(I18n.config.languages_file)['en']['languages'][@locale.to_s]
 
     @vars = {}
@@ -41,6 +44,9 @@ class TranslationController < ApplicationController
     @page_key = File.join(@group.to_s, @page.to_s)
     @keys = SortedSet.new
     @translations = LinguaFranca.get_translations(@application.slug, @application.path, @locale)
+    unless @locale == :en
+      @english_translations = LinguaFranca.get_translations(@application.slug, @application.path, :en)
+    end
     @language = YAML.load_file(I18n.config.languages_file)['en']['languages'][@locale.to_s]
 
     page_key = "#{@group}/#{@page}"
