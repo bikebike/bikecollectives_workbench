@@ -101,6 +101,7 @@ Translator.prototype.selectKey = function(key) {
 
                 _this.translator.classList.add('open');
                 _this.translator.classList.remove('opening');
+                _this.input.focus();
             }
         }
     }
