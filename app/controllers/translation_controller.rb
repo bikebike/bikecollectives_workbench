@@ -17,9 +17,16 @@ class TranslationController < ApplicationController
     @vars = {}
     @keys = SortedSet.new
     LinguaFranca.get_translation_info(@application.path).each do |key, pages|
-      @keys << key
-      if pages.values && pages.values.first['data'] && pages.values.first['data']['vars']
+      if key =~ /(?:^geography\.(?:countries|subregions)\.|^languages\.|\[[0-9]+\]$)/
+      elsif pages.values && pages.values.first['data'] && pages.values.first['data']['vars']
         @vars[key] = pages.values.first['data']['vars'].keys
+        @keys << key
+        # don't add arrays, they are date parts
+      elsif key =~ /^(.*)\.(zero|one)$/
+        @keys << $1
+        @vars[$1] = ['count']
+      else
+        @keys << key
       end
     end
   end

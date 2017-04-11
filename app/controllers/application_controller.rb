@@ -82,7 +82,6 @@ private
     @languages = YAML.load_file(I18n.config.languages_file)['en']['languages']
   end
 
-
   def add_scripts(*scripts)
     @javascripts ||= Set.new
     @javascripts += scripts
@@ -104,6 +103,11 @@ private
     "<time datetime=\"#{datetime}\">on #{datetime}</time>".html_safe
   end
 
-  helper_method :javascripts, :time
+  def screenshot_path(application_slug, controller, action, index, variant)
+    @version ||= (File.mtime(File.join(Application.find_by_slug(application_slug).path, 'log/i18n')).to_i - 1491800000).to_s(36)
+    super(application_slug, controller, action, index, variant, v: @version)
+  end
+
+  helper_method :javascripts, :time, :screenshot_path
 
 end

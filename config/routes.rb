@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   post '/apps/:app/translate/:locale/watch' => 'translation#watch_translation', as: :watch_translation
   get  '/apps/:app/translate/:locale/:group/:page/:key' => 'translation#translator', as: :translator, constraints: { key: /[^\/]+/ }
   
-  get  '/apps/:app/screenshots/:group/:page/:index/:variant' => 'example#screenshot', as: :screenshot
+  get  '/apps/:app/screenshots/:group/:page/:index/:variant.png' => 'example#screenshot', as: :screenshot
   get  '/apps/:app/examples/:group/:page/:index' => 'example#page', as: :example_page
   get  '/apps/:app/example-files/:dir/:file' => 'example#file', as: :example_file, constraints: { file: /.*/ }
 
