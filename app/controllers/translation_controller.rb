@@ -3,19 +3,6 @@ class TranslationController < ApplicationController
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  # def index
-  #   @locales = {}
-  #   LinguaFranca.enabled_locales(@application.slug, @application.path).each do |locale|
-  #     stats = LinguaFranca.locale_stats(@application.slug, @application.path, locale)
-  #     @locales[locale] = {
-  #       completion: (stats[:total] - stats[:incomplete]) / stats[:total].to_f
-  #     }
-  #   end
-
-  #   @all_locales = LinguaFranca.available_locales - @locales.keys
-  #   @languages = YAML.load_file(I18n.config.languages_file)['en']['languages']
-  # end
-
   def translate_locale
     @help = :translations
     @back = { text: "Back to #{@application.name}", link: view_application_path(@application.slug) }
@@ -44,6 +31,7 @@ class TranslationController < ApplicationController
     @page_key = File.join(@group.to_s, @page.to_s)
     @keys = SortedSet.new
     @translations = LinguaFranca.get_translations(@application.slug, @application.path, @locale)
+
     unless @locale == :en
       @english_translations = LinguaFranca.get_translations(@application.slug, @application.path, :en)
     end

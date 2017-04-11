@@ -9,6 +9,7 @@ var Translator = function(urlTemplate) {
     this.varBtnTemplate = '<input type="submit" value="%{value}" name="$1" class="%{type}">';
     this.lastCaretPosition = 0;
     this._onclose = null;
+    this._beforeSave = null;
     this._afterSave = null;
     this.orginalValue = null;
     this.currentKey = null;
@@ -146,6 +147,9 @@ Translator.prototype.save = function() {
             }
         }
     }
+    if (this._beforeSave) {
+        this._beforeSave(this.currentKey);
+    }
     request.open('POST', form.getAttribute('action'), true);
     request.send(new FormData(form));
     this.close();
@@ -282,6 +286,10 @@ Translator.prototype.onchange = function() {
 
 Translator.prototype.onclose = function(fn) {
     this._onclose = fn;
+};
+
+Translator.prototype.beforeSave = function(fn) {
+    this._beforeSave = fn;
 };
 
 Translator.prototype.afterSave = function(fn) {
@@ -430,9 +438,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (!translator) {
                     translator = new Translator(table.getAttribute('data-translator-path'));
                     translator.onclose(function() { exitFullscreen(); });
+                    translator.beforeSave(function(key) {
+                        table.querySelector('tr[data-key="' + key + '"] .has-value').classList.add('saving');
+                    });
                     translator.afterSave(function(data) {
-                        var key = table.querySelector('tr[data-key="' + data.key + '"] .value');
+                        var key = table.querySelector('tr[data-key="' + data.key + '"] .has-value .value');
                         key.innerHTML = data.formattedValue;
+                        table.querySelector('tr[data-key="' + data.key + '"] .has-value').classList.remove('saving');
                     });
                 }
                 translator.selectKey(key);

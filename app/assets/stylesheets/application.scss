@@ -281,6 +281,10 @@ td {
     vertical-align: top;
 }
 
+@keyframes rotate {
+  to { transform: rotate(360deg); }
+}
+
 tbody {
     background-color: rgba($black, 0.05);
 
@@ -298,9 +302,48 @@ tbody {
             }
         }
 
-        td .english, th .english {
+        td.english, th.english {
             border-left: 0.1em solid rgba(255,255,255,0.5);
             color: #BBB;
+        }
+
+        td {
+            position: relative;
+
+            &.has-value {
+                &::after {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    bottom: 0;
+                    right: 0;
+                    width: 3em;
+                    height: 3em;
+                    margin: auto;
+                    border: 0.25em solid;
+                    border-radius: 50%;
+                    border-color: rgba($black, 0.25) rgba($black, 0.25) $green $green;
+                    transform: rotate(0deg);
+                    opacity: 0;
+                    transition: opacity 100ms ease-in-out;
+                }
+
+                &.saving::after {
+                    opacity: 1;
+                    animation: rotate 1s linear infinite;
+                }
+
+                .value {
+                    filter: blur(0);
+                    will-change: filter;
+                    transition: filter 200ms ease-in-out;
+                }
+
+                &.saving .value {
+                    filter: blur(5px);
+                }
+            }
         }
     }
 

@@ -11,7 +11,7 @@
         - plurals(@translations[key], @locale).each do |subkey, translation|
           %tr{tabindex: 0, data: {key: "#{key}.#{subkey}", demokey: key}}
             %th.code=format_key(key, subkey)
-            %td
+            %td.has-value
               .value
                 - if @translations[key].present? && @translations[key][subkey].present?
                   = format_value(@translations[key][subkey])
@@ -23,7 +23,7 @@
       - else
         %tr{tabindex: 0, data: {key: key}}
           %th.code=format_key(key)
-          %td
+          %td.has-value
             .value
               - if @translations[key].present?
                 = format_value(@translations[key])
