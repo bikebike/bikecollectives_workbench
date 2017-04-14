@@ -15,6 +15,10 @@ class ExampleController < ApplicationController
   end
 
   def file
+    response.headers['Cache-Control'] = 'public'
+    response.headers['Expires'] = 1.year.from_now.httpdate
+    expires_in 1.year, public: true
+
     file = File.join(@application.path, 'public', params[:dir], params[:file])
     extension = File.extname(file)[1..-1]
 
@@ -25,6 +29,10 @@ class ExampleController < ApplicationController
   end
 
   def screenshot
+    response.headers['Cache-Control'] = 'public'
+    response.headers['Expires'] = 1.month.from_now.httpdate
+    expires_in 1.month, public: true
+
     file_path = LinguaFranca.example_file_path(
                   @application.path,
                   params[:group],

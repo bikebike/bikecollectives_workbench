@@ -30,8 +30,10 @@ module ApplicationHelper
 
     val = value.gsub(/%\{(.*?)\}/, '<span class="variable">\1</span>')
 
-    if val.match(/%(\w)(\b)/)
-      val.gsub!(/%(\w)(\b)/) { |match| "<span class=\"formatter\" name=\"#{$1}\">#{formatters[$1].first}[#{formatters[$1].last}]</span>#{$2}" }
+    if val.match(/%n\b/)
+      # TODO: support currency formatting
+    elsif val.match(/%(\w)(\b)/)
+      val.gsub!(/%(\w)(\b)/) { |match| formatters[$1].nil? ? match : "<span class=\"formatter\" name=\"#{$1}\">#{formatters[$1].first}[#{formatters[$1].last}]</span>#{$2}" }
     end
 
     return val.html_safe

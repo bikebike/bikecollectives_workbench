@@ -114,7 +114,7 @@ class TranslationController < ApplicationController
 
     @info = LinguaFranca.get_translation_info(@application.path)[@demokey] || {}
     if @info.has_key?(@page_key)
-      @info.sort_by! { |k, v| k == @page_key ? "!#{k}" : "$#{k}"}.to_h
+      @info = @info.sort_by { |k, v| k == @page_key ? "!#{k}" : "$#{k}"}.to_h
     else
       @page_key = @info.keys.first
     end
