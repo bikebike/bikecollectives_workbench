@@ -305,10 +305,14 @@ tbody {
                     opacity: 1;
                 }
             }
+
+            &.untranslated td.has-value {
+                background-image: repeating-linear-gradient(135deg, rgba(0,0,0,0.025), rgba(0,0,0,0.025) 0.1rem, transparent 0.1rem, transparent 0.4rem);
+            }
         }
 
         td.english, th.english {
-            border-left: 0.1em solid rgba(255,255,255,0.5);
+            border-left: 0.125em solid rgba(255,255,255,0.5);
 
             .value {
                 opacity: 0.5;

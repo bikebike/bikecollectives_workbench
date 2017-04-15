@@ -9,7 +9,7 @@
     - @keys.each do |key|
       - if @vars[key] && @vars[key].include?('count')
         - plurals(@translations[key], @locale).each do |subkey, translation|
-          %tr{tabindex: 0, data: {key: "#{key}.#{subkey}", demokey: key}, class: plural_class(@locale, subkey, @translations[key][subkey])}
+          %tr{tabindex: 0, data: {key: "#{key}.#{subkey}", demokey: key}, class: plural_class(@locale, subkey, (@translations[key] || {})[subkey])}
             %th.code=format_key(key, subkey)
             %td.has-value
               .value
@@ -21,7 +21,7 @@
                   - if @english_translations[key].present? && @english_translations[key][subkey].present?
                     = format_value(@english_translations[key][subkey])
       - else
-        %tr{tabindex: 0, data: {key: key}}
+        %tr{tabindex: 0, class: @translations[key].present? ? :translated : :untranslated, data: {key: key}}
           %th.code=format_key(key)
           %td.has-value
             .value

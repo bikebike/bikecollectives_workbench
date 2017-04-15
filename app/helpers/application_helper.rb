@@ -95,7 +95,7 @@ module ApplicationHelper
   end
 
   def plural_class(locale, plural, translation)
-    plural == :zero && !translation ? 'not-required' : nil
+    plural == :zero && !translation ? 'not-required' : (translation.present? ? :translated : :untranslated)
   end
 
   def markdown(content)
