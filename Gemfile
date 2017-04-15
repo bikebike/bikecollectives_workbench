@@ -26,17 +26,8 @@ gem 'letter_opener'
 gem 'launchy'
 gem 'geocoder'
 
-if Dir.exists?('../lingua_franca')
-  gem 'lingua_franca', path: '../lingua_franca'
-else
-  gem 'lingua_franca', git: 'https://github.com/lingua-franca/lingua_franca.git', :branch => '2017'
-end
-
-if Dir.exists?('../bikecollectives_core')
-  gem 'bikecollectives_core', path: '../bikecollectives_core'
-else
-  gem 'bikecollectives_core', git: 'https://github.com/bikebike/bikecollectives_core.git'
-end
+gem 'lingua_franca', git: 'https://github.com/lingua-franca/lingua_franca.git', branch: '2017'
+gem 'bikecollectives_core', git: 'https://github.com/bikebike/bikecollectives_core.git', branch: 'master'
 
 group :development do
   gem 'better_errors'
@@ -44,7 +35,7 @@ group :development do
   gem 'meta_request'
   
   gem 'eventmachine', git: 'https://github.com/krzcho/eventmachine', branch: 'master'
-  gem 'thin'# , :github => 'krzcho/thin', :branch => 'master'
+  gem 'thin'
 end
 
 platforms :ruby do

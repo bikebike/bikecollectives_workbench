@@ -38,7 +38,7 @@ class ApplicationController < BaseController
               :edit_user] unless @page
   end
 
-private
+protected
 
   def send_confirmation(confirmation)
     UserMailer.email_confirmation(confirmation.id).deliver_now!
@@ -103,11 +103,20 @@ private
     "<time datetime=\"#{datetime}\">on #{datetime}</time>".html_safe
   end
 
-  def screenshot_path(application_slug, controller, action, index, variant)
-    @version ||= (File.mtime(File.join(Application.find_by_slug(application_slug).path, 'log/i18n')).to_i - 1491800000).to_s(36)
-    super(application_slug, controller, action, index, variant, v: @version)
+  def example_page_path(application_slug, controller, action, index, anchor)
+    cached_example_page_path(application_slug, controller, action, index, app_version(application_slug), anchor: anchor)
   end
 
-  helper_method :javascripts, :time, :screenshot_path
+  def screenshot_path(application_slug, controller, action, index, variant)
+    cached_screenshot_path(application_slug, controller, action, index, variant, app_version(application_slug))
+  end
+
+  def app_version(application_slug)
+    @app_versions ||= {}
+    @app_versions[application_slug] ||= (File.mtime(File.join(Application.find_by_slug(application_slug).path, 'log/i18n')).to_i - 1491800000).to_s(36)
+    return @app_versions[application_slug]
+  end
+
+  helper_method :javascripts, :time, :screenshot_path, :example_page_path
 
 end

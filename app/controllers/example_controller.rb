@@ -4,6 +4,9 @@ class ExampleController < ApplicationController
   layout false
 
   def page
+    # allow caching of the image if we were given a hash
+    expires_in 1.month, public: true if params[:hash]
+
     @html = LinguaFranca.load_example(@application.path, params[:group], params[:page], params[:index])
             .gsub(/(="|\(['"]?)(?:\.\.\/){4}public\/(assets|uploads)/,
                 "\\1/apps/#{params[:app]}/example-files/\\2")
@@ -15,8 +18,7 @@ class ExampleController < ApplicationController
   end
 
   def file
-    response.headers['Cache-Control'] = 'public'
-    response.headers['Expires'] = 1.year.from_now.httpdate
+    # cache asset files for one year, they are already hashed so we don't need to worry about cache busting
     expires_in 1.year, public: true
 
     file = File.join(@application.path, 'public', params[:dir], params[:file])
@@ -29,9 +31,8 @@ class ExampleController < ApplicationController
   end
 
   def screenshot
-    response.headers['Cache-Control'] = 'public'
-    response.headers['Expires'] = 1.month.from_now.httpdate
-    expires_in 1.month, public: true
+    # allow caching of the image if we were given a hash
+    expires_in 1.month, public: true if params[:hash]
 
     file_path = LinguaFranca.example_file_path(
                   @application.path,

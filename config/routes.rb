@@ -17,7 +17,9 @@ Rails.application.routes.draw do
   get  '/apps/:app/translate/:locale/:group/:page/:key' => 'translation#translator', as: :translator, constraints: { key: /[^\/]+/ }
   
   get  '/apps/:app/screenshots/:group/:page/:index/:variant.png' => 'example#screenshot', as: :screenshot
+  get  '/apps/:app/screenshots/:group/:page/:index/:variant/:hash.png' => 'example#screenshot', as: :cached_screenshot
   get  '/apps/:app/examples/:group/:page/:index' => 'example#page', as: :example_page
+  get  '/apps/:app/examples/:group/:page/:index/:hash' => 'example#page', as: :cached_example_page
   get  '/apps/:app/example-files/:dir/:file' => 'example#file', as: :example_file, constraints: { file: /.*/ }
 
   get  '/users' => 'users#index', as: :users

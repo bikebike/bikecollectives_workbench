@@ -1,6 +1,7 @@
 GIT
   remote: https://github.com/bikebike/bikecollectives_core.git
   revision: 3c9c6ac9fb3da839c945fd851f9ab255361ad296
+  branch: master
   specs:
     bikecollectives_core (0.1.0)
       activerecord-session_store
@@ -29,7 +30,7 @@ GIT
 
 GIT
   remote: https://github.com/lingua-franca/lingua_franca.git
-  revision: 5402861b637701891651ea5525649a9662514e93
+  revision: 5f08b59827caf2f3e55152f65a942b92fcb3a601
   branch: 2017
   specs:
     lingua_franca (0.0.1)

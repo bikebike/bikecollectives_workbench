@@ -12,7 +12,7 @@
           - controller, action = page.split('/')
           - info['indices'].each do |index|
             %li{class: controller == @group.to_s && action == @page.to_s ? :highlight : nil}
-              - path = example_page_path(@application.slug, controller, action, index, anchor: @demokey)
+              - path = example_page_path(@application.slug, controller, action, index, @demokey)
               - screenshot = screenshot_path(@application.slug, controller, action, index, :desktop)
               %figure.screenshot
                 %img{src: screenshot}
