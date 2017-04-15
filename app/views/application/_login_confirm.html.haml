@@ -1,0 +1,7 @@
+.row
+  %h2 Please confirm your email address
+  = form_tag :do_confirm do
+    = hidden_field_tag :token, @confirmation.token
+    %div.flex
+      = email_field_tag :email, nil, class: [:stretch, :big]
+      = button_tag 'Login', value: :confirm_email
