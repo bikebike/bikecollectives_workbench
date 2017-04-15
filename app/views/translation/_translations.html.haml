@@ -7,9 +7,9 @@
         %th.english English Translation
   %tbody
     - @keys.each do |key|
-      - if (@vars[key] && @vars[key].include?('count')) || (@translations[key] && @translations[key].is_a?(Hash))
+      - if @vars[key] && @vars[key].include?('count')
         - plurals(@translations[key], @locale).each do |subkey, translation|
-          %tr{tabindex: 0, data: {key: "#{key}.#{subkey}", demokey: key}}
+          %tr{tabindex: 0, data: {key: "#{key}.#{subkey}", demokey: key}, class: plural_class(@locale, subkey, @translations[key][subkey])}
             %th.code=format_key(key, subkey)
             %td.has-value
               .value

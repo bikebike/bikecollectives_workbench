@@ -49,9 +49,6 @@ section {
     }
 
     &.options {
-        // max-width: 800px;
-        // margin: 3em auto 0;
-
         li {
             position: relative;
             text-align: center;
@@ -229,7 +226,6 @@ p {
 h1, h2, h3, h4, h5, h6, label, th, figcaption {
     font-family: $title;
     font-weight: $title-weight;
-    letter-spacing: 0.0333em;
     margin: 0 0 0.5em;
 }
 
@@ -275,6 +271,7 @@ section.help {
 th {
     text-align: left;
     vertical-align: top;
+    padding-right: 1em;
 }
 
 td {
@@ -300,11 +297,22 @@ tbody {
             &:hover {
                 background-color: rgba($white, 0.5);
             }
+
+            &.not-required {
+                opacity: 0.333;
+
+                &:hover {
+                    opacity: 1;
+                }
+            }
         }
 
         td.english, th.english {
             border-left: 0.1em solid rgba(255,255,255,0.5);
-            color: #BBB;
+
+            .value {
+                opacity: 0.5;
+            }
         }
 
         td {

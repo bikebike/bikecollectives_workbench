@@ -94,6 +94,10 @@ module ApplicationHelper
     {zero: nil, one: nil, other: nil}.merge(translation || {})
   end
 
+  def plural_class(locale, plural, translation)
+    plural == :zero && !translation ? 'not-required' : nil
+  end
+
   def markdown(content)
     @markdown ||= Redcarpet::Markdown.new(Redcarpet::Render::HTML.new({
         filter_html: true,
