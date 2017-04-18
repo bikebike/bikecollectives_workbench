@@ -912,12 +912,10 @@ input.formatter {
 
     &.open, &.opening {
         display: block;
-        display: flex;
     }
 
     .dlg {
         display: none;
-
     }
 
     &.open .dlg {
@@ -1006,14 +1004,13 @@ input.formatter {
 }
 
 .dlg {
-    position: relative;
-    flex: 1;
-    max-width: 80%;
-    max-height: 80%;
-    margin: auto;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    max-height: 100%;
+    overflow: auto;
     box-shadow: 0 0 1.5em -0.5em $black;
-    border-radius: 0.5em;
-    overflow: hidden;
     background-color: $black;
 
     .dlg-inner {
