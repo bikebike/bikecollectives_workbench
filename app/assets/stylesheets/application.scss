@@ -263,8 +263,12 @@ section.help {
     }
 
     figure {
-        margin: 0;
+        margin: 2em 0;
         text-align: center;
+        
+        img {
+            box-shadow: 0 0 2em -0.5em rgba($black, 0.25);
+        }
     }
 }
 
