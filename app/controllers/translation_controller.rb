@@ -72,6 +72,10 @@ class TranslationController < ApplicationController
       end
     end
 
+    # make a record of the translation so we have some idea who changed it
+    TranslationRecord.create(locale: params[:locale], translator_id: current_user.id, key: params[:key], value: translation)
+
+    # render json as the output
     render json: {
       status: :success,
       key: params[:key],

@@ -1,4 +1,5 @@
 require 'mime/types'
+require 'tmpdir'
 
 class ApplicationController < BaseController
   # Prevent CSRF attacks by raising an exception.
@@ -113,7 +114,18 @@ protected
 
   def app_version(application_slug)
     @app_versions ||= {}
-    @app_versions[application_slug] ||= (File.mtime(File.join(Application.find_by_slug(application_slug).path, 'log/i18n')).to_i - 1491800000).to_s(36)
+    unless @app_versions[application_slug].present?
+      path = Application.find_by_slug(application_slug).path
+      app_version = LinguaFranca.test_version(application_slug, path)
+      tmpfile = Tempfile.new("#{application_slug}--version.tmp")
+      old_app_version = tmpfile.read
+
+      if old_app_version != app_version
+        Rails.cache.clear
+        tmpfile.write(app_version)
+      end
+      @app_versions[application_slug] = app_version
+    end
     return @app_versions[application_slug]
   end
 

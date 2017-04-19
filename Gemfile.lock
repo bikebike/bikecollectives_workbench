@@ -30,7 +30,7 @@ GIT
 
 GIT
   remote: https://github.com/lingua-franca/lingua_franca.git
-  revision: 5f08b59827caf2f3e55152f65a942b92fcb3a601
+  revision: 618d704de71f50cc706c1c073a7f702765c931ac
   branch: 2017
   specs:
     lingua_franca (0.0.1)
@@ -306,4 +306,4 @@ DEPENDENCIES
   unicorn
 
 BUNDLED WITH
-   1.14.4
+   1.14.6
