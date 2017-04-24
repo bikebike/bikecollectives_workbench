@@ -954,6 +954,7 @@ input.formatter {
     }
 
     .input {
+        min-height: 3.5em;
         max-height: 15em;
         background-color: lighten($black, 5%);
         font-family: $monospace;
