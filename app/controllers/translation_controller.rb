@@ -18,7 +18,7 @@ class TranslationController < ApplicationController
     @keys = SortedSet.new
     keys = LinguaFranca.get_translation_info(@application.path)
     keys.each do |key, pages|
-      if key =~ /(?:^geography\.(?:countries|subregions)\.|^languages\.|\[[0-9]+\]$)/
+      if LinguaFranca.imported_translation?(key)
       elsif pages.values && pages.values.first['data'] && pages.values.first['data']['vars']
         @vars[key] = pages.values.first['data']['vars'].keys
         @keys << key
@@ -59,18 +59,20 @@ class TranslationController < ApplicationController
   end
 
   def save_translation
-    translation = params[:translation].gsub(/&nbsp;/, ' ')
+    translation = ActionView::Base.full_sanitizer.sanitize(params[:translation]).gsub(/[[:space:]]{2,}/, ' ').strip
     old_translation = LinguaFranca.get_translations(@application.slug, @application.path, params[:locale])[params[:key]]
 
     LinguaFranca.save_translation(@application.slug, @application.path, params[:locale], params[:key], translation)
     current_user.follow_translation(@application.id, params[:key])
 
     language = YAML.load_file(I18n.config.languages_file)['en']['languages'][params[:locale]]
-    TranslationFollower.where(application_id: @application.id).each do |follower|
-      unless follower.user_id == current_user.id
-        UserMailer.translation_changed(current_user, language, params[:key], old_translation, translation).deliver_now
-      end
-    end
+
+    # TODO    
+    # TranslationFollower.where(application_id: @application.id).each do |follower|
+    #   unless follower.user_id == current_user.id
+    #     UserMailer.translation_changed(current_user, language, params[:key], old_translation, translation).deliver_now
+    #   end
+    # end
 
     # make a record of the translation so we have some idea who changed it
     TranslationRecord.create(locale: params[:locale], translator_id: current_user.id, key: params[:key], value: translation)

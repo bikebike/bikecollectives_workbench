@@ -30,7 +30,7 @@ GIT
 
 GIT
   remote: https://github.com/lingua-franca/lingua_franca.git
-  revision: 618d704de71f50cc706c1c073a7f702765c931ac
+  revision: ff2d972c0ede76762f57662fa31c832ee35a906f
   branch: 2017
   specs:
     lingua_franca (0.0.1)
