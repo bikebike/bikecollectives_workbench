@@ -11,9 +11,12 @@ class ExampleController < ApplicationController
             .gsub(/(="|\(['"]?)(?:\.\.\/){4}public\/(assets|uploads)/,
                 "\\1/apps/#{params[:app]}/example-files/\\2")
               .gsub(/#{LinguaFranca::REGEX_END_TRANSLATION}/, '')
+              .gsub(/#{Regexp.escape(LinguaFranca::START_TRANSLATION).gsub(LinguaFranca::KEY_MATCH_REGEX, '')}/, '')
+
+    # convert comments to attributes
     while @html =~ /#{LinguaFranca::REGEX_START_TRANSLATION}/
-      @html.gsub!(/(<[^>]+)#{LinguaFranca::REGEX_START_TRANSLATION}(.*?[^\-])>/) { |match| "#{$1}#{$3} lingua-franca-attr=\"#{$2.split(',').first}\">"}
-      @html.gsub!(/([^\-])>([^<]*)#{LinguaFranca::REGEX_START_TRANSLATION}/) { |match| "#{$1} lingua-franca-key=\"#{$3.split(',').first}\">#{$2}"}
+      @html.gsub!(/(<[^>]+)#{LinguaFranca::REGEX_START_TRANSLATION}(.*?[^\-])>/m) { |match| "#{$1}#{$3} lingua-franca-attr=\"#{$2.split(',').first}\">" }
+      @html.gsub!(/([^\-])>([^<]*)#{LinguaFranca::REGEX_START_TRANSLATION}/m) { |match| "#{$1} lingua-franca-key=\"#{$3.split(',').first}\">#{$2}" }
     end
   end
 

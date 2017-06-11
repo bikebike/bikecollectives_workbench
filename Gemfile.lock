@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/bikebike/bikecollectives_core.git
-  revision: 3c9c6ac9fb3da839c945fd851f9ab255361ad296
+  revision: 398f1177a143b6aaad63ce02709803dfdcd1abac
   branch: master
   specs:
     bikecollectives_core (0.1.0)
@@ -30,7 +30,7 @@ GIT
 
 GIT
   remote: https://github.com/lingua-franca/lingua_franca.git
-  revision: ff2d972c0ede76762f57662fa31c832ee35a906f
+  revision: b60b9e2ae7130d7d55c54458a5e87527dcb67bbe
   branch: 2017
   specs:
     lingua_franca (0.0.1)
