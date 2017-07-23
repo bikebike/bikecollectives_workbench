@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/bikebike/bikecollectives_core.git
-  revision: 398f1177a143b6aaad63ce02709803dfdcd1abac
+  revision: 60b21c5a060587fe4b51d86ff42ba9920709955c
   branch: master
   specs:
     bikecollectives_core (0.1.0)
@@ -30,8 +30,8 @@ GIT
 
 GIT
   remote: https://github.com/lingua-franca/lingua_franca.git
-  revision: b60b9e2ae7130d7d55c54458a5e87527dcb67bbe
-  branch: 2017
+  revision: e07626777d1ee6d4a3c6942d242f6c30dcb433ea
+  branch: master
   specs:
     lingua_franca (0.0.1)
       diffy
@@ -138,7 +138,7 @@ GEM
     haml (4.0.7)
       tilt
     htmlentities (4.3.4)
-    http_accept_language (2.1.0)
+    http_accept_language (2.1.1)
     i18n (0.8.1)
     image_optimizer (1.7.0)
     json (1.8.6)

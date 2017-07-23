@@ -45,16 +45,23 @@ protected
     UserMailer.email_confirmation(confirmation.id).deliver_now!
   end
 
+  def public_page?
+    case params[:controller]
+    when 'example'
+      return true
+    when 'application'
+      return true if params[:action] == 'home' && !logged_in?
+      return params[:action] == 'access_request'
+    when 'user'
+      return ['do_confirm', 'confirm', 'oauth', 'callback'].include?(params[:action])
+    end
+
+    return false
+  end
+
   def load_app
     unless logged_in? && current_user.has_workbench_access
-      case "#{params[:controller]}##{params[:action]}"
-      when 'application#home'
-        do_403 if logged_in?
-      when 'application#access_request', 'user#do_confirm', 'user#confirm', 'user#oauth', 'user#callback'
-        # this is a public page
-      else
-        do_403
-      end
+      do_403 unless public_page?
     end
 
     ActionMailer::Base.default_url_options[:host] = "#{request.protocol}#{request.host_with_port}"

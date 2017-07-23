@@ -26,7 +26,7 @@ gem 'letter_opener'
 gem 'launchy'
 gem 'geocoder'
 
-gem 'lingua_franca', git: 'https://github.com/lingua-franca/lingua_franca.git', branch: '2017'
+gem 'lingua_franca', git: 'https://github.com/lingua-franca/lingua_franca.git', branch: 'master'
 gem 'bikecollectives_core', git: 'https://github.com/bikebike/bikecollectives_core.git', branch: 'master'
 
 group :development do
